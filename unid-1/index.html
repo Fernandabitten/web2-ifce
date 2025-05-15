@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desenvolvimento Web II - IFCE</title>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <h1>Apresentação de Scripts</h1>
+
+    <section class="card">
+      <h2>Calcular IMC</h2>
+      <input type="number" id="peso" placeholder="Peso (kg)" />
+      <input type="number" id="altura" placeholder="Altura (m)" />
+      <button onclick="executarIMC()">Calcular</button>
+      <p id="resultadoIMC"></p>
+    </section>
+
+    <section class="card">
+      <h2>Verificar Palíndromo</h2>
+      <input type="text" id="palavra" placeholder="Digite uma palavra" />
+      <button onclick="verificarPalindromo()">Verificar</button>
+      <p id="tamanhoPalavra"></p>
+      <p id="resultadoPalindromo"></p>
+    </section>
+
+    <section class="card">
+      <h2>Manipulação de Array</h2>
+      <button onclick="executarArray()">Mostrar no console</button>
+    </section>
+
+    <section class="card">
+      <h2>Objeto Carro</h2>
+      <button onclick="executarCarro()">Mostrar no console</button>
+    </section>
+
+    <section class="card">
+      <h2>Classe Livro</h2>
+      <button onclick="executarLivro()">Mostrar no console</button>
+    </section>
+
+    <!-- Scripts -->
+    <script src="scripts/calculoIMC.js"></script>
+    <script src="scripts/verificarPalindromo.js"></script>
+    <script src="scripts/arrayMetodos.js"></script>
+    <script src="scripts/objetoCarro.js"></script>
+    <script src="scripts/classeLivro.js"></script>
+  </body>
+</html>
