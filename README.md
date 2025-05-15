@@ -3,6 +3,7 @@
 Este repositório contém as atividades desenvolvidas ao longo da disciplina. **Desenvolvimento Web II** do curso Técnico em Informática para a Internet no **Instituto Federal de Educação, Ciência e Tecnologia do Ceará (IFCE)**.
 
 **Organização por Unidades:**
+
 As atividades estão divididas em repositórios separados, de acordo com as unidades da disciplina:
 
 - [unid-1](https://github.com/seu-usuario/unid-1): Fundamentos do JavaScript moderno, manipulação de DOM e Programação Orientada a Objetos no JavaScript.
