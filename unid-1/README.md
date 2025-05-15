@@ -43,11 +43,10 @@ unid-1/
   <summary>Ver Screenshots</summary>
 
   <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-    <img src="https://github.com/user-attachments/assets/a00d33f3-89b7-488b-ad35-bd4143ceb365" alt="Screenshot 1" style="width: 300px;">
-    <img src="https://github.com/user-attachments/assets/10aca613-107c-4b28-b655-eba2e0012b25" alt="Screenshot 2" style="width: 300px;">
-    <img src="https://github.com/user-attachments/assets/954de5ba-cdf7-4f31-8297-9b3f2ebb2f7f" alt="Screenshot 3" style="width: 300px;">
+    <img src="https://github.com/user-attachments/assets/05eced54-2e10-4e01-9db7-809966f2d7e3" alt="Screenshot 1" style="width: 300px;">
+    <img src="https://github.com/user-attachments/assets/8df80f66-b9ff-4609-af82-b318e0fe426c" alt="Screenshot 2" style="width: 300px;">
+    <img src="https://github.com/user-attachments/assets/8e3465fa-dc07-445a-9b96-ea29607043ac" alt="Screenshot 2" style="width: 300px;">
   </div>
-
 </details>
 
 **Deploy do projeto:** [https://web2-unid1/]('#')
