@@ -1,9 +1,12 @@
 # Web II - IFCE
 
+![GitHub language top](https://img.shields.io/github/languages/top/Fernandabitten/web2-ifce)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Fernandabitten/web2-ifce)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Fernandabitten/web2-ifce)
 ![GitHub](https://img.shields.io/github/license/Fernandabitten/web2-ifce)
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+
+
 
 Este repositório contém as atividades desenvolvidas ao longo da disciplina. **Desenvolvimento Web II** do curso Técnico em Informática para a Internet no **Instituto Federal de Educação, Ciência e Tecnologia do Ceará (IFCE)**.
 
