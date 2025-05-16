@@ -1,4 +1,5 @@
 # Unidade 1 – Introdução ao JavaScript
+![Status](https://img.shields.io/badge/progresso-100%25-green)
 
 Este repositório contém as atividades desenvolvidas na **Unidade 1** da disciplina **Desenvolvimento Web II (IFCE)**. O foco está em práticas com funções, arrays, objetos e classes em JavaScript, além da estruturação básica de interfaces com HTML e CSS.
 
