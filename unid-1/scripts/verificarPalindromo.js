@@ -5,8 +5,9 @@ function tamanhoPalavra(texto) {
 }
 
 function isPalindromo(texto) {
-  const strReversa = texto.split("").reverse().join("");
-  return texto === strReversa;
+  const textoNormalizado = texto.toLowerCase();
+  const strReversa = textoNormalizado.split("").reverse().join("");
+  return textoNormalizado === strReversa;
 }
 
 function verificarPalindromo() {
