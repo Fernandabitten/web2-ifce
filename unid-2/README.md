@@ -98,3 +98,22 @@ unid-2/
 - Pressione = novamente → Histórico mostra 5+2=
 - Troque de operador → Histórico mostra 7-
 - Pressione ⌫ após um resultado → Histórico é limpo
+
+## Galeria de Imagens
+
+<details>
+  <summary>Ver Screenshots</summary>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+    <img src="https://github.com/user-attachments/assets/6c97bc6c-7ee7-4c38-90f4-1cf73deafa09" alt="Screenshot 1" style="width: 300px;">
+    <img src="https://github.com/user-attachments/assets/ae33b582-0b2a-4b3b-a56b-34b0dadc9318" alt="Screenshot 2" style="width: 300px;">
+    <img src="https://github.com/user-attachments/assets/8d4ca7e3-a737-4767-83e5-1daa2818c2a1" alt="Screenshot 2" style="width: 300px;">
+  </div>
+
+![image](https://github.com/user-attachments/assets/8d4ca7e3-a737-4767-83e5-1daa2818c2a1)
+
+
+
+</details>
+
+ [👉 **Acesse aqui!!:** ](https://fernandabitten.github.io/web2-ifce/unid-2/)
