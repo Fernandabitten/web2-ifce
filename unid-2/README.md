@@ -109,11 +109,6 @@ unid-2/
     <img src="https://github.com/user-attachments/assets/ae33b582-0b2a-4b3b-a56b-34b0dadc9318" alt="Screenshot 2" style="width: 300px;">
     <img src="https://github.com/user-attachments/assets/8d4ca7e3-a737-4767-83e5-1daa2818c2a1" alt="Screenshot 2" style="width: 300px;">
   </div>
-
-![image](https://github.com/user-attachments/assets/8d4ca7e3-a737-4767-83e5-1daa2818c2a1)
-
-
-
 </details>
 
  [👉 **Acesse aqui!!:** ](https://fernandabitten.github.io/web2-ifce/unid-2/)
