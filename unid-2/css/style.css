@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI Variable", "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3em;
+}
+
+#calc {
+  width: 325px;
+  padding: 0.5em;
+  background-color: #1a1f31;
+  color: #fff;
+  box-shadow: 0 0 2em black;
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.calculator-title {
+  display: flex;
+  align-items: center;
+  gap: 1em; /* Espaço entre imagem e texto */
+  margin: 0.13em 0 0 0.63em;
+}
+
+.calculator-title .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.calculator-title h3 {
+  font-size: 0.8em;
+  font-weight: 300;
+  color: #666S;
+}
+
+.operations {
+  text-align: right;
+  height: 100px;
+  margin-bottom: 8px;
+}
+
+#previous-operations,
+#current-operations {
+  min-height: 30px;
+  padding: 0.2em;
+  overflow-wrap: break-word;
+  transition: none;
+}
+
+#previous-operations {
+  color: #777;
+  overflow-wrap: break-word;
+}
+
+#current-operations {
+  font-size: 3em;
+  font-weight: 600;
+  /* overflow-wrap: break-word; */
+  font-size: 3em; /* Tamanho inicial da fonte */
+  white-space: nowrap;
+}
+
+#buttons-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+}
+
+#buttons-container button {
+  background-color: #23273a;
+  color: #fff;
+  border: none;
+  border-radius: 0.25em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 1.2rem;
+  padding: 16px 0;
+  transition: background 0.2s;
+}
+
+#buttons-container button:hover {
+  background-color: #474a5a;
+}
+
+#buttons-container .number {
+  background-color: #474a5a;
+  color: #fff;
+}
+
+#buttons-container .number:hover {
+  background-color: #23273a;
+}
+
+#buttons-container #equal-btn {
+  background-color: #0cc0df;
+  color: #000;
+}
+
+#buttons-container #equal-btn:hover {
+  background-color: #3a91d8;
+  font-size: 20px;
+}
+
+#buttons-container button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) inset;
+}
+
+#error {
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.button-disabled {
+  pointer-events: none; /* Impede cliques */
+  opacity: 0.3; /* Deixa o botão um pouco transparente */
+  cursor: not-allowed; /* Altera o cursor para indicar que não é clicável */
+}
+
+#buttons-container button.active-by-keyboard,
+#buttons-container button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) inset;
+}

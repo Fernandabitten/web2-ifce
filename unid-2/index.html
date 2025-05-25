@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora</title>
+    <link rel="shortcut icon" href="img/calculadora.png" type="image/png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="calc">
+      <div class="calculator-title">
+        <img
+          src="img/calculadora.png"
+          alt="Imagem de uma calculadora"
+          class="icon"
+        />
+        <h3>Calculadora</h3>
+      </div>
+      <!-- DISPLAY -->
+      <div class="operations">
+        <div id="previous-operations"></div>
+        <div id="error"></div>
+        <div id="current-operations">0</div>
+      </div>
+      <!-- <BUTTONS -->
+      <div id="buttons-container">
+        <button data-op="%"><i class="fa-solid fa-percent"></i></button>
+        <button data-op="CE">CE</button>
+        <button data-op="C">C</button>
+        <button data-op="⌫"><i class="fa-solid fa-delete-left"></i></button>
+        <button>1/x</button>
+        <button data-op="x2">
+          <span>x<sup>2</sup></span>
+        </button>
+        <button data-op="2√x">
+          <sup>2</sup><i class="fa-solid fa-square-root-variable"></i>
+        </button>
+        <button data-op="÷"><i class="fa-solid fa-divide"></i></button>
+
+        <button class="number" data-value="7">7</button>
+        <button class="number" data-value="8">8</button>
+        <button class="number" data-value="9">9</button>
+        <button data-op="x"><i class="fa-solid fa-xmark"></i></button>
+
+        <button class="number" data-value="4">4</button>
+        <button class="number" data-value="5">5</button>
+        <button class="number" data-value="6">6</button>
+        <button data-op="-"><i class="fa-solid fa-minus"></i></button>
+
+        <button class="number" data-value="1">1</button>
+        <button class="number" data-value="2">2</button>
+        <button class="number" data-value="3">3</button>
+        <button data-op="+"><i class="fa-solid fa-plus"></i></button>
+
+        <button class="number" data-op="+/-">+/-</button>
+        <button class="number zero" data-value="0">0</button>
+        <button class="number" data-value=",">,</button>
+        <button id="equal-btn" data-op="=">
+          <i class="fa-solid fa-equals"></i>
+        </button>
+      </div>
+    </div>
+    <script type="module" src="js/script.js"></script>
+  </body>
+</html>
