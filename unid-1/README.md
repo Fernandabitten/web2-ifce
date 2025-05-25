@@ -30,11 +30,7 @@ unid-1/
 
 ## Como executar
 
-1. Clone o repositório:
-
-```
-   git clone https://github.com/seu-usuario/unid-1
-```
+1.  Faça download do repositório
 
 2. Abra o index.html em um navegador moderno (Google Chrome, Firefox, etc.)
 
