@@ -1,0 +1,28 @@
+name: Deploy Capsula do Tempo to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # branch usada para deploy
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Generate config.js from template
+        run: |
+          # Caminho para a pasta onde está o projeto e o config.template.js
+          PROJECT_DIR="unid-3/capsula-do-tempo" # <-- Caminho ajustado a partir da raiz do repositório
+
+          # Copia o template para criar o arquivo final dentro da pasta do projeto
+          cp "$PROJECT_DIR/config.template.js" "$PROJECT_DIR/config.js"
+          # Substitui o placeholder com o valor do Secret no arquivo dentro da pasta do projeto
+          sed -i "s|%%UNSPLASH_API_KEY%%|${{ secrets.UNSPLASH_API_KEY }}|g" "$PROJECT_DIR/config.js"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./unid-3/capsula-do-tempo/
