@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Fernanda Bittencourt" />
+    <title>To Do List com Voz</title>
+    <link rel="icon" href="img/todo.png" type="image/png" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <div class="comands">
+        <button id="helpBtn" class="help-button">❓ Ajuda</button>
+        <button id="toggleTheme">🌙/☀️</button>
+      </div>
+      <h1>To Do List com Voz</h1>
+      <section class="input-group">
+        <input type="text" id="taskInput" placeholder="Digite sua tarefa..." />
+        <button id="addTask">Adicionar</button>
+        <button id="readTasks">🔊 Ler Tarefas</button>
+      </section>
+      <div id="error-message"></div>
+
+      <ul id="taskList"></ul>
+
+      <!-- Modal -->
+      <section id="helpModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>ℹ️ Ajuda e Comandos de Voz</h2>
+
+          <h3>🗣️ Comandos disponíveis:</h3>
+          <ul>
+            <li><b>Adicionar</b> → O assistente pergunta o nome da tarefa.</li>
+            <li><b>Ler tarefas</b> → Lê em voz alta suas tarefas.</li>
+            <li><b>Concluir tarefa [nome]</b> → Marca como concluída.</li>
+            <li><b>Desmarcar tarefa [nome]</b> → Remove o concluído.</li>
+            <li><b>Excluir tarefa [nome]</b> → Deleta a tarefa.</li>
+            <li><b>Modo claro</b> → Ativa modo claro.</li>
+            <li><b>Modo escuro</b> → Ativa modo escuro.</li>
+            <li><b>Limpar tarefas</b> → Remove todas as tarefas.</li>
+            <li>
+              <b>Ajuda ou Quais são os comandos</b> → Informa os comando de voz
+              disponíveis.
+            </li>
+          </ul>
+
+          <h3>⚠️ Importante:</h3>
+          <p>
+            O assistente de voz funciona melhor no <b>Google Chrome</b> e
+            <b>Microsoft Edge</b>.<br />
+            <b>Não é compatível</b> com <b>Firefox</b>, <b>Safari</b> e alguns
+            navegadores móveis.<br />
+            Permita o uso do microfone quando for solicitado.
+          </p>
+
+          <h3>💡 Dicas:</h3>
+          <p>Fale de forma clara e pausada para obter melhores resultados.</p>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
