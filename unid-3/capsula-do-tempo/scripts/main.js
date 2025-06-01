@@ -49,7 +49,6 @@ async function fetchWeatherData() {
 
   try {
     const coords = await getCoordinates(city);
-    console.log("Coordenadas obtidas:", coords);
     if (!coords) {
       loadingIndicator.classList.add("hidden");
       weatherDisplay.classList.add("grid");

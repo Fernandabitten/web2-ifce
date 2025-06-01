@@ -2,6 +2,10 @@
 
 import { showModal } from "./ui.js"; // Importa showModal
 
+// Define a variável, mesmo que não exista chave para evitar parar o fluxo do código
+const UNSPLASH_KEY =
+  typeof UNSPLASH_API_KEY !== "undefined" ? UNSPLASH_API_KEY : "";
+
 // Busca as coordenadas da cidade usando a Open-Meteo Geocoding API
 export async function getCoordinates(city) {
   const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
@@ -59,14 +63,14 @@ export async function getCoordinates(city) {
 
 // Busca as imagens da cidade usando a Unsplash API
 export async function fetchCityImage(query, index = 0, quantity = 3) {
-  if (!UNSPLASH_API_KEY || UNSPLASH_API_KEY === "SUA_CHAVE_DA_UNSPLASH_AQUI") {
+  if (!UNSPLASH_KEY || UNSPLASH_KEY === "SUA_CHAVE_DA_UNSPLASH_AQUI") {
     console.warn(
       "Chave da Unsplash API não configurada. As imagens de fundo não serão carregadas."
     );
     return null;
   }
 
-  const url = `https://api.unsplash.com/search/photos?query=${query}&per_page=${quantity}&client_id=${UNSPLASH_API_KEY}`;
+  const url = `https://api.unsplash.com/search/photos?query=${query}&per_page=${quantity}&client_id=${UNSPLASH_KEY}`;
 
   try {
     const response = await fetch(url);

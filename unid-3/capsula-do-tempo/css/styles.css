@@ -191,3 +191,10 @@ body {
 .modal-close-button:hover {
   background-color: #d65a3f;
 }
+
+.card-image-section {
+  background-color: #ccc; /* Fallback cinza */
+  min-height: 150px; /* ajuste conforme necessário */
+  background-size: cover;
+  background-position: center;
+}

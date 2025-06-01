@@ -35,7 +35,7 @@ export function fillCard(type, data) {
   // A imagem será preenchida aqui
   const imgDiv = card.querySelector(".card-image-section");
   if (imgDiv) {
-    imgDiv.style.backgroundImage = data.urlImg ? data.urlImg : "none";
+    imgDiv.style.backgroundImage = data.urlImg;
   }
 
   // Adiciona no container
@@ -80,7 +80,7 @@ export function displayCurrentWeather(data, cityDisplayName, imageUrl) {
     };
 
     const dados = {
-      urlImg: `url('${imageUrl}')`,
+      urlImg: imageUrl ? `url('${imageUrl}')` : "none",
       title: "Clima Atual",
       icon: weatherInfo.emoji,
       location: cityDisplayName,
@@ -123,7 +123,7 @@ export function displayPastWeather(data, cityDisplayName, date, imageUrl) {
       };
 
       const dados = {
-        urlImg: `url('${imageUrl}')`,
+        urlImg: imageUrl ? `url('${imageUrl}')` : "none",
         title: "Clima Passado",
         icon: weatherInfo.emoji,
         location: cityDisplayName,
@@ -166,7 +166,7 @@ export function displayFutureWeather(data, cityDisplayName, imageUrl) {
     };
 
     const dados = {
-      urlImg: `url('${imageUrl}')`,
+      urlImg: imageUrl ? `url('${imageUrl}')` : "none",
       title: "Previsão Futura",
       icon: weatherInfo.emoji,
       location: cityDisplayName,

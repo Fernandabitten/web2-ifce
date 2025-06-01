@@ -23,7 +23,7 @@ Este projeto cumpre os seguintes requisitos e objetivos da Unidade 3:
 - ✅ Clima Atual: Obtenha informações meteorológicas em tempo real para a cidade desejada.
 - ✅ Clima no Passado: Consulte dados históricos do clima para uma data específica.
 - ✅ Previsão Futura: Veja a previsão do tempo para o próximo dia
-- ✅ Imagens de Fundo Dinâmicas: Cada card de clima (Atual, Passado, Futuro) é enriquecido com uma imagem de fundo da cidade pesquisada.
+- ✅ Imagens de Fundo Dinâmicas: Cada card de clima (Atual, Passado, Futuro) é enriquecido com uma imagem de fundo da cidade pesquisada, caso a chave da API não esteja configurada no local da foto existe um quadro cinza.
 - ✅ Interface Intuitiva: Design responsivo e amigável, construído com Tailwind CSS, garantindo uma boa experiência em diferentes dispositivos.
 - ✅ Modais de Mensagem: Feedback claro e amigável ao usuário sobre erros, sucesso ou informações importantes.
 - ✅ Modularização: O código JavaScript é modularizado para melhor organização, manutenção e escalabilidade.
