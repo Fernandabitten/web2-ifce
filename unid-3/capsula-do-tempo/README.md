@@ -95,8 +95,6 @@ cd unid-3/capsula-do-tempo`
   </div>
 </details>
 
-![image]()
-
 
  [👉 **Acesse aqui!!:** ](https://fernandabitten.github.io/web2-ifce/unid-3/capsula-do-tempo/index.html)
 
