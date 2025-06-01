@@ -83,6 +83,22 @@ cd unid-3/capsula-do-tempo`
         └── (imagens do projeto)
 └── README.md
 ```
+## Galeria de Imagens
+
+<details>
+  <summary>Ver Screenshots</summary>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+    <img src="https://github.com/user-attachments/assets/b77096fd-70c5-4262-8dd2-eeec4e2c4996" alt="Screenshot 1" style="width: 300px;">
+    <img src="https://github.com/user-attachments/assets/e089b2d7-1701-4fda-8076-3b5540365bef" alt="Screenshot 2" style="width: 300px;">
+    <img src="https://github.com/user-attachments/assets/3c194514-67c9-42ef-81ef-5fbf5dee6b4a" alt="Screenshot 2" style="width: 300px;">
+  </div>
+</details>
+
+![image]()
+
+
+ [👉 **Acesse aqui!!:** ](https://fernandabitten.github.io/web2-ifce/unid-3/capsula-do-tempo/index.html)
 
 # Contribuição
 
