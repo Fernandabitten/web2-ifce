@@ -75,3 +75,16 @@ cd unid-3/todolist`
 2. Abra o arquivo index.html em seu navegador (preferencialmente Google Chrome ou Edge).
 3. Permita o uso do microfone quando solicitado.
 4. Use a interface para adicionar tarefas ou utilize comandos de voz.
+
+## Galeria de Imagens
+
+<details>
+  <summary>Ver Screenshots</summary>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+    <img src="https://github.com/user-attachments/assets/0e259351-3f77-441d-9d33-df319fc385a7" alt="Screenshot 1" style="width: 300px;">
+    <img src="https://github.com/user-attachments/assets/856e6c7c-84c0-49af-b3b9-78ead1d31bf6" alt="Screenshot 2" style="width: 300px;">
+  </div>
+</details>
+
+ [👉 **Acesse aqui!!:** ](https://fernandabitten.github.io/web2-ifce/unid-3/todolist/)
