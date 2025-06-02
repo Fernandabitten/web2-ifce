@@ -19,7 +19,7 @@ jobs:
 
       - name: Generate config.js from template
         run: |
-          PROJECT_DIR="unid-3/capsula-do-tempo"
+          PROJECT_DIR="web2-ifce/unid-3/capsula-do-tempo"
           cp "$PROJECT_DIR/config.template.js" "$PROJECT_DIR/config.js"
           sed -i "s|%%UNSPLASH_API_KEY%%|${{ secrets.UNSPLASH_API_KEY }}|g" "$PROJECT_DIR/config.js"
           ls -l "$PROJECT_DIR/" # Linha de depuracao, pode remover apos o sucesso
