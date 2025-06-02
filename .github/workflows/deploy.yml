@@ -3,23 +3,26 @@ name: Deploy Capsula do Tempo to GitHub Pages
 on:
   push:
     branches:
-      - main # branch usada para deploy
+      - main # ou a branch que você usa para deploy
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions: # <-- Adicione este bloco aqui
+      contents: write # Permite que o job escreva no repositorio (incluindo push para gh-pages)
+      pages: write # Permissao especifica para deploy em GitHub Pages (nova no GH)
+      id-token: write # Necessario para autenticacao OIDC, que eh uma boa pratica
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Generate config.js from template
         run: |
-          # Caminho para a pasta onde está o projeto e o config.template.js
-          PROJECT_DIR="unid-3/capsula-do-tempo" # <-- Caminho ajustado a partir da raiz do repositório
-
-          # Copia o template para criar o arquivo final dentro da pasta do projeto
+          PROJECT_DIR="unid-3/capsula-do-tempo"
           cp "$PROJECT_DIR/config.template.js" "$PROJECT_DIR/config.js"
-          # Substitui o placeholder com o valor do Secret no arquivo dentro da pasta do projeto
           sed -i "s|%%UNSPLASH_API_KEY%%|${{ secrets.UNSPLASH_API_KEY }}|g" "$PROJECT_DIR/config.js"
+          ls -l "$PROJECT_DIR/" # Linha de depuracao, pode remover apos o sucesso
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
