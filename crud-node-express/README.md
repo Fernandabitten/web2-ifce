@@ -88,6 +88,18 @@ node server.js`
 - 🔗 Backend: [Deploy no Render](https://web2-ifce.onrender.com/)
 
 ---
+## 📄 Documentação
+
+O projeto conta com uma especificação completa de casos de uso, descrevendo detalhadamente os fluxos de cadastro, listagem, edição e exclusão de filmes ou séries, além de regras de negócio e requisitos não funcionais.
+
+A especificação de casos de uso foi elaborada por mim com base nos conhecimentos adquiridos na disciplina de **Engenharia de Software**, servindo como apoio à modelagem e organização do projeto.
+
+📎 Acesse o documento:  
+👉 [Especificação de Casos de Uso (PDF)](https://fernandabitten.github.io/web2-ifce/crud-node-express/docs/Espe_Caso_%20de_%20Uso_Crud_de_Filmes.pdf)
+
+> Obs.: o arquivo está disponível na pasta `docs/` do repositório.
+
+---
 
 ## Design do Projeto
 
