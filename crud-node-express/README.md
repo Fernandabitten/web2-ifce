@@ -74,11 +74,19 @@ crud-node-express/
 ## Como executar
 
 1. Clone o repositório e acesse a pasta específica do projeto
-   `git clone https://github.com/Fernandabitten/web2-ifce.git
-cd crud-node-express`
-2. `cd backend
-npm install
-node server.js`
+   
+   `git clone https://github.com/Fernandabitten/web2-ifce.git`
+   
+2. Acesse a pasta do projeto:
+   
+   `cd crud-node-express`
+   
+3. Vá para a pasta backend, instale as dependências e inicie o servidor:
+   > `cd backend`
+   
+   > `npm install`
+   
+   > `node server.js`
 
 ---
 
