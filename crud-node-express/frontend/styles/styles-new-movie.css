@@ -90,6 +90,7 @@ h1 {
   font-size: 16px;
   resize: none;
   outline: none;
+  text-transform: capitalize;
 }
 
 .input-wrapper input::placeholder,
