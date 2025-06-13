@@ -1,4 +1,11 @@
-const BASE_API_URL = "https://web2-ifce.onrender.com";
+const isLocal =
+  ["localhost", "127.0.0.1"].includes(window.location.hostname) ||
+  window.location.hostname.startsWith("192.168.");
+
+const BASE_API_URL = isLocal
+  ? "http://localhost:3000"
+  : "https://web2-ifce.onrender.com";
+
 const saveButton = document.getElementById("saveButton");
 
 const urlParams = new URLSearchParams(window.location.search);
