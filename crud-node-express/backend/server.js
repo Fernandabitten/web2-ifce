@@ -16,7 +16,7 @@ let nextId = 1;
 
 // --- Endpoints da API REST ---
 app.get("/", (req, res) => {
-  res.send("Helow!!!");
+  res.send("Hello!!!");
 });
 
 // Adicionar
