@@ -88,6 +88,8 @@ crud-node-express/
    
    > `node server.js`
 
+4. Abra o arquivo index.html da pasta frontend no navegador para testar a interface.
+
 ---
 
 ## Links Importantes
