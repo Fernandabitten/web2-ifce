@@ -10,6 +10,7 @@ app.use(express.json());
 
 // Array para armazenar os filmes/séries em memória
 let movies = [];
+
 // Contador para gerar IDs automáticos
 let nextId = 1;
 
@@ -31,9 +32,38 @@ app.post("/movie", (req, res) => {
   res.status(201).json(novoItem);
 });
 
+// Editar
+app.put("/movie/:id", (req, res) => {
+  const { id } = req.params;
+  const { title, genre, rating, description } = req.body;
+
+  const movie = movies.find((m) => String(m.id) === String(id));
+  if (!movie) {
+    return res.status(404).json({ message: "Filme não encontrado" });
+  }
+
+  movie.title = title;
+  movie.rating = rating;
+  movie.description = description;
+  movie.genre = genre;
+
+  res.status(200).json({ message: "Filme atualizado com sucesso" });
+});
+
 //Listar
 app.get("/movies", (req, res) => {
   res.send(movies);
+});
+
+//Deletar
+app.delete("/movie/:id", (req, res) => {
+  const { id } = req.params;
+  const index = movies.findIndex((movie) => String(movie.id) === String(id));
+  if (index === -1) {
+    return res.status(404).json({ message: "Filme não encontrado" });
+  }
+  movies.splice(index, 1);
+  res.status(200).json({ message: "Filme removido com sucesso" });
 });
 
 app.listen(PORT, () => {

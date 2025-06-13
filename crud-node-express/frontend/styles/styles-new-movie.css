@@ -171,6 +171,11 @@ select.new-marker {
   background-color: var(--pink-accent-hover);
 }
 
+#genre option {
+  background-color: var(--input-background);
+  color: var(--text-color-secondary);
+}
+
 /* --- Media Queries para Responsividade --- */
 
 @media (max-width: 768px) {
