@@ -1,4 +1,4 @@
-const BASE_API_URL = "http://localhost:3000";
+const BASE_API_URL = "https://web2-ifce.onrender.com";
 
 let allMovies = [];
 const list = document.getElementById("list");

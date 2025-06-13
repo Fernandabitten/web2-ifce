@@ -1,4 +1,4 @@
-const BASE_API_URL = "http://localhost:3000";
+const BASE_API_URL = "https://web2-ifce.onrender.com";
 const saveButton = document.getElementById("saveButton");
 
 const urlParams = new URLSearchParams(window.location.search);
