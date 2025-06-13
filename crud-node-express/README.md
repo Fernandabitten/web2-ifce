@@ -95,3 +95,13 @@ O layout do projeto foi desenvolvido previamente no **Figma** e serve como guia 
 Acesse o protótipo interativo clicando no link abaixo:  
 👉 [Protótipo no Figma](https://www.figma.com/proto/85MVyp2u2fKbMM6cq3usMR/Sem-t%C3%ADtulo?node-id=5-126&t=LNmbOzzlb8aCgYsc-0&scaling=min-zoom&content-scaling=fixed&page-id=5%3A113&starting-point-node-id=5%3A126)
 Você deve ter uma conta <a href="https://www.figma.com/">Figma</a> para acessá-lo.
+
+## Galeria de Imagens
+
+<details>
+  <summary>Ver Screenshots</summary>
+  <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+    <img src="https://github.com/user-attachments/assets/8832bb27-c05a-4051-ae42-8001963541c7" alt="Screenshot 1" style="width: 300px;">
+    <img src="https://github.com/user-attachments/assets/05378720-003c-40f6-8cf4-f2bee8f9e4a9" alt="Screenshot 2" style="width: 300px;">
+  </div>
+</details>
