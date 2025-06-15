@@ -25,9 +25,26 @@ if (movieId) {
     });
 }
 
+function formatTitle(text) {
+  if (!text) return "";
+
+  const lowercaseWords = ["de", "da", "do", "das", "dos", "e", "em", "a", "o", "as", "os", "com", "sem", "por"];
+
+  return text
+    .toLowerCase()
+    .split(" ")
+    .map((word, index) => {
+      if (index !== 0 && lowercaseWords.includes(word)) {
+        return word;
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
+}
+
 if (saveButton) {
-  saveButton.addEventListener("click", function () {
-    const title = document.getElementById("title").value;
+  saveButton.addEventListener("click", async function () {
+    const title = formatTitle(document.getElementById("title").value.trim());
     const rating = parseFloat(document.getElementById("rating").value);
     const description = document.getElementById("description").value;
     const genre = document.querySelector(".new-marker").value;
@@ -46,10 +63,39 @@ if (saveButton) {
 
     const movieData = { title, rating, description, genre };
 
-    if (movieId) {
-      editMovie(movieData);
-    } else {
-      addMovie(movieData);
+    try {
+      // Buscar todos os filmes cadastrados
+      const response = await fetch(`${BASE_API_URL}/movies`);
+      const movies = await response.json();
+
+      // Normalizar o título atual para comparação
+      const normalizedTitle = title.toLowerCase().trim();
+
+      // Verificar se já existe um filme com esse título
+      const titleExists = movies.some((movie) => {
+        const movieTitle = movie.title.toLowerCase().trim();
+        const isSameTitle = movieTitle === normalizedTitle;
+
+        // Se for edição, ignorar o próprio filme
+        const isSameMovie = String(movie.id) === movieId;
+
+        return isSameTitle && !isSameMovie;
+      });
+
+      if (titleExists) {
+        alert("Já existe um filme com esse título.");
+        return;
+      }
+
+      // Enviar para API (add ou edit)
+      if (movieId) {
+        editMovie(movieData);
+      } else {
+        addMovie(movieData);
+      }
+    } catch (error) {
+      console.error("Erro ao verificar títulos existentes:", error);
+      alert("Erro ao verificar títulos existentes.");
     }
   });
 }
