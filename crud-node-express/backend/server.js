@@ -23,12 +23,25 @@ app.get("/", (req, res) => {
 app.post("/movie", (req, res) => {
   const { title, genre, rating, description } = req.body;
 
+  // Verifica se o filme já está cadastrado (sem distinguir maiúsculas/minúsculas)
+  const jaCadastrado = movies.find(
+    (movie) => movie.title.toLowerCase() === title.toLowerCase()
+  );
+
+  if (jaCadastrado) {
+    return res.status(400).json({ erro: "Filme já cadastrado." });
+  }
+
+  // Validação da nota
   if (rating < 0 || rating > 10) {
     return res.status(400).json({ erro: "Nota deve estar entre 0 e 10" });
   }
 
+  // Criação e armazenamento do novo item
   const novoItem = { id: nextId++, title, genre, rating, description };
   movies.push(novoItem);
+
+  // Retorno de sucesso
   res.status(201).json(novoItem);
 });
 
