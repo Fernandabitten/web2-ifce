@@ -6,10 +6,12 @@ const BASE_API_URL = isLocal
   ? "http://localhost:3000"
   : "https://web2-ifce.onrender.com";
 
-const saveButton = document.getElementById("saveButton");
-
 const urlParams = new URLSearchParams(window.location.search);
 const movieId = urlParams.get("id");
+
+const saveButton = document.getElementById("saveButton");
+const title = document.getElementById("title-pg");
+title.textContent = movieId ? "Editar Filme" : "Novo filme";
 
 if (movieId) {
   fetch(`${BASE_API_URL}/movies`)
