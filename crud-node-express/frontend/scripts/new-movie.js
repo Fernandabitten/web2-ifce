@@ -12,6 +12,7 @@ const movieId = urlParams.get("id");
 const saveButton = document.getElementById("saveButton");
 const title = document.getElementById("title-pg");
 title.textContent = movieId ? "Editar Filme" : "Novo filme";
+const msg = document.getElementById("message");
 
 if (movieId) {
   fetch(`${BASE_API_URL}/movies`)
@@ -30,7 +31,22 @@ if (movieId) {
 function formatTitle(text) {
   if (!text) return "";
 
-  const lowercaseWords = ["de", "da", "do", "das", "dos", "e", "em", "a", "o", "as", "os", "com", "sem", "por"];
+  const lowercaseWords = [
+    "de",
+    "da",
+    "do",
+    "das",
+    "dos",
+    "e",
+    "em",
+    "a",
+    "o",
+    "as",
+    "os",
+    "com",
+    "sem",
+    "por",
+  ];
 
   return text
     .toLowerCase()
@@ -47,7 +63,7 @@ function formatTitle(text) {
 if (saveButton) {
   saveButton.addEventListener("click", async function () {
     const title = formatTitle(document.getElementById("title").value.trim());
-    const rating = parseFloat(document.getElementById("rating").value);
+    const rating = parseInt(document.getElementById("rating").value, 10);
     const description = document.getElementById("description").value;
     const genre = document.querySelector(".new-marker").value;
 
@@ -56,6 +72,7 @@ if (saveButton) {
       isNaN(rating) ||
       rating < 0 ||
       rating > 10 ||
+      !Number.isInteger(rating) ||
       !genre ||
       genre === "Selecione um gênero"
     ) {
@@ -111,7 +128,7 @@ async function addMovie(movieData) {
     });
 
     if (response.ok) {
-      alert("Filme cadastrado com sucesso!");
+      msg.textContent = "Filme cadastrado com sucesso!";
       window.location.href = "index.html";
     } else {
       const error = await response.json();
@@ -132,7 +149,7 @@ async function editMovie(movieData) {
     });
 
     if (response.ok) {
-      alert("Filme atualizado com sucesso!");
+      msg.textContent = "Filme atualizado com sucesso!";
       window.location.href = "index.html";
     } else {
       const error = await response.json();

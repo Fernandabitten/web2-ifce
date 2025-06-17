@@ -177,6 +177,10 @@ select.new-marker {
   color: var(--text-color-secondary);
 }
 
+#message {
+  color: #4caf50;
+}
+
 /* --- Media Queries para Responsividade --- */
 
 @media (max-width: 768px) {
