@@ -26,9 +26,12 @@ Construir um sistema completo (frontend e backend) que permita ao usuário **cad
 
 - [x] Adicionar novo filme/série
 - [x] Listar todos os registros
-- [x] Buscar filme/série por ID
-- [x] Atualizar informações
+- [X] Editar qualquer informação
 - [x] Excluir filme/série por ID
+- [x] Buscar filme/série por ID
+- [x] Validação da nota (0 a 10)
+- [x] Persistência com SQLite
+
 
 ---
 
@@ -55,10 +58,12 @@ Construir um sistema completo (frontend e backend) que permita ao usuário **cad
 
 ```
 crud-node-express/
-├── backend/
+├── backend/                       # Servidor Express com rotas RESTful
+|   ├── database.js                # Configuração do banco SQLite
+│   ├── filmes.db                  # Arquivo do banco SQLite (gerado automaticamente)
 │   ├── package-lock.json
 │   ├── package.json
-│   └── server.js                  # Servidor Node.js
+│   └── server.js                  # Código principal do servidor
 └── frontend/
     ├── img/                       # Imagens utilizadas na interface
     ├── scripts/                   # Scripts JavaScript do frontend
