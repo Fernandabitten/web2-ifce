@@ -1,0 +1,245 @@
+:root {
+  --background-dark: #1c1b1e;
+  --background-light: #282828;
+  --text-color-primary: #f4f4f4;
+  --text-color-secondary: #999999;
+  --pink-accent: #ff859b;
+  --pink-accent-hover: #cc0052;
+  --tag-background: #3e3e3e;
+  --input-background: #232323;
+  --border-color: #3a3a3a;
+  --placeholder-color: #7c7c8a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--background-dark);
+  color: var(--text-color-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  width: 100%;
+  flex-grow: 1;
+  padding: 3rem 5rem; /* 48px 80px */
+  max-width: 1300px; /* Limita largura máxima para telas grandes */
+  margin: 0 auto; /* Centralize o conteúdo principal */
+  display: flex;
+  flex-direction: column;
+}
+
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--pink-accent);
+  text-decoration: none;
+  font-size: 16px;
+  margin-bottom: 24px;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: var(--pink-accent-hover);
+}
+
+.back-link svg {
+  fill: var(--pink-accent);
+  width: 16px;
+  height: 16px;
+  transition: fill 0.3s ease;
+}
+
+.back-link:hover svg {
+  fill: #cc0052;
+}
+
+h1 {
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: var(--text-color-primary);
+  margin-bottom: 40px;
+}
+
+.form-row {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.form-row .input-wrapper {
+  flex: 1;
+}
+
+.input-wrapper input,
+.input-wrapper textarea {
+  width: 100%;
+  padding: 19px 24px;
+  background-color: var(--input-background);
+  border: none;
+  border-radius: 10px;
+  color: var(--text-color-primary);
+  font-size: 16px;
+  resize: none;
+  outline: none;
+  text-transform: capitalize;
+}
+
+.input-wrapper input::placeholder,
+.input-wrapper textarea::placeholder {
+  color: var(--placeholder-color);
+}
+
+.input-wrapper textarea {
+  min-height: 274px;
+}
+
+.markers-section {
+  margin-top: 2.5rem;
+}
+
+.markers-section h2 {
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--text-color-secondary);
+  margin-bottom: 24px;
+}
+
+.markers-container {
+  background-color: var(--input-background);
+  padding: 16px;
+  border-radius: 10px;
+  display: flex;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.new-marker {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  color: var(--text-color-secondary);
+  border: 2px dashed var(--text-color-secondary);
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 16px;
+}
+select.new-marker {
+  width: 100%;
+}
+.form-actions {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.form-actions button {
+  flex: 1;
+  padding: 16px 24px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-actions .delete-button {
+  background-color: var(--input-background);
+  color: var(--pink-accent);
+  border: none;
+}
+
+.form-actions .delete-button:hover {
+  background-color: #3e3e3e;
+}
+
+.form-actions .save-button {
+  background-color: var(--pink-accent);
+  color: var(--background-dark);
+  border: none;
+}
+
+.form-actions .save-button:hover {
+  background-color: var(--pink-accent-hover);
+}
+
+#genre option {
+  background-color: var(--input-background);
+  color: var(--text-color-secondary);
+}
+
+#message {
+  color: #4caf50;
+}
+
+/* --- Media Queries para Responsividade --- */
+
+@media (max-width: 768px) {
+  main {
+    padding: 2rem; /* Reduz padding em telas menores */
+  }
+
+  h1 {
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  .markers-container {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 1.5rem 1rem;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .input-wrapper input,
+  .input-wrapper textarea {
+    font-size: 14px;
+    padding: 16px 20px;
+  }
+
+  .new-marker {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .back-link {
+    font-size: 14px;
+  }
+
+  .back-link svg {
+    width: 14px;
+    height: 14px;
+  }
+}

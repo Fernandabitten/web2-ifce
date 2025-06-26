@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crud Node Express - Novo Filme</title>
+    <link rel="icon" href="img/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/styles-new-movie.css" />
+  </head>
+  <body>
+    <main>
+      <a href="index.html" class="back-link">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7.4475 3.3275C7.29125 3.17125 7.0375 3.17125 6.88125 3.3275L3.3275 6.88125C3.17125 7.0375 3.17125 7.29125 3.3275 7.4475L6.88125 11.0012C7.0375 11.1575 7.29125 11.1575 7.4475 11.0012C7.60375 10.845 7.60375 10.5912 7.4475 10.435L4.475 7.4625L12.6625 7.4625C12.9062 7.4625 13.1062 7.2625 13.1062 7.01875C13.1062 6.775 12.9062 6.575 12.6625 6.575L4.475 6.575L7.4475 3.6025C7.60375 3.44625 7.60375 3.1925 7.4475 3.3275Z"
+            fill="currentColor"
+          />
+        </svg>
+        Voltar
+      </a>
+
+      <h1 id="title-pg">Novo filme</h1>
+
+      <div class="form-row">
+        <div class="input-wrapper">
+          <input type="text" placeholder="Título" id="title" />
+        </div>
+        <div class="input-wrapper">
+          <input
+            type="number"
+            placeholder="Sua nota (de 0 a 10)"
+            min="0"
+            max="10"
+            step="1"
+            id="rating"
+          />
+        </div>
+      </div>
+
+      <div class="input-wrapper">
+        <textarea placeholder="Observações" id="description"></textarea>
+      </div>
+      <div class="markers-section">
+        <div class="markers-container">
+          <select id="genre" class="new-marker">
+            <option value="">Selecione um gênero</option>
+            <option value="acao">Ação</option>
+            <option value="aventura">Aventura</option>
+            <option value="animacao">Animação</option>
+            <option value="biografia">Biografia</option>
+            <option value="comedia">Comédia</option>
+            <option value="crime">Crime</option>
+            <option value="documentario">Documentário</option>
+            <option value="drama">Drama</option>
+            <option value="familia">Família</option>
+            <option value="fantasia">Fantasia</option>
+            <option value="faroeste">Faroeste</option>
+            <option value="ficcao-cientifica">Ficção Científica</option>
+            <option value="guerra">Guerra</option>
+            <option value="historia">História</option>
+            <option value="misterio">Mistério</option>
+            <option value="musical">Musical</option>
+            <option value="policial">Policial</option>
+            <option value="romance">Romance</option>
+            <option value="suspense">Suspense</option>
+            <option value="terror">Terror</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="delete-button">Cancelar</button>
+        <button type="button" class="save-button" id="saveButton">
+          Salvar alterações
+        </button>
+        <p id="message"></p>
+      </div>
+    </main>
+    <script src="scripts/new-movie.js"></script>
+  </body>
+</html>
