@@ -25,6 +25,54 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+header {
+  background-color: var(--background-dark);
+  padding: 1.5rem 5rem; /* 24px 80px */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  gap: 4rem; /* 64px */
+}
+
+header .logo {
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  font-size: 1.5rem; /* 24px */
+  color: var(--pink-accent);
+}
+
+header .search-bar {
+  flex-grow: 1;
+  position: relative;
+}
+
+header .search-bar input {
+  width: 100%;
+  padding: 1rem 1.5rem; /* 16px 24px */
+  background-color: var(--input-background);
+  border: none;
+  border-radius: 0.5rem; /* 8px */
+  color: var(--text-color-primary);
+  font-size: 1rem; /* 16px */
+}
+
+header .search-bar input::placeholder {
+  color: var(--text-color-secondary);
+}
+
+header .user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+header .user img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
 main {
   width: 100%;
   flex-grow: 1;
@@ -181,9 +229,122 @@ select.new-marker {
   color: #4caf50;
 }
 
+/* --- Menu ---*/
+.user-menu {
+  position: absolute;
+  right: 0;
+  top: 60px;
+  background-color: var(--background-dark);
+  border: 2px solid var(--background-light);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 100;
+  min-width: 140px;
+  border-radius: 8px;
+  display: none;
+}
+
+.user-menu button {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 8px 0;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text-color-primary);
+}
+.user-menu button:hover {
+  background: var(--background-light);
+}
+
+/* --- Media Queries para Responsividade --- */
+
+/* Tablets e desktops */
+@media (max-width: 1024px) {
+  header,
+  main {
+    padding-left: 3rem; /* 48px */
+    padding-right: 3rem; /* 48px */
+  }
+  header {
+    gap: 2rem; /* 32px */
+  }
+  .my-movies-header h1 {
+    font-size: 1.8rem;
+  }
+}
+
 /* --- Media Queries para Responsividade --- */
 
 @media (max-width: 768px) {
+  /* .my-movies-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .my-movies-header h1 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  } */
+  /* header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem 2rem;
+    gap: 1.5rem;
+  }
+  header .logo {
+    margin-bottom: 0.5rem;
+  }
+  header .search-bar {
+    width: 100%;
+  } */
+  header {
+    background-color: var(--background-dark);
+    padding: 1.5rem 5rem; /* 24px 80px */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+    gap: 4rem; /* 64px */
+  }
+
+  header .logo {
+    font-family: "Roboto Slab", serif;
+    font-weight: 700;
+    font-size: 1.5rem; /* 24px */
+    color: var(--pink-accent);
+  }
+
+  header .search-bar {
+    flex-grow: 1;
+    position: relative;
+  }
+
+  header .search-bar input {
+    width: 100%;
+    padding: 1rem 1.5rem; /* 16px 24px */
+    background-color: var(--input-background);
+    border: none;
+    border-radius: 0.5rem; /* 8px */
+    color: var(--text-color-primary);
+    font-size: 1rem; /* 16px */
+  }
+
+  header .search-bar input::placeholder {
+    color: var(--text-color-secondary);
+  }
+
+  header .user {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  header .user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
   main {
     padding: 2rem; /* Reduz padding em telas menores */
   }

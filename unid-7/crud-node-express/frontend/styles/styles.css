@@ -61,6 +61,19 @@ header .search-bar input::placeholder {
   color: var(--text-color-secondary);
 }
 
+
+header .user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+header .user img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
 main {
   width: 100%;
   flex-grow: 1;
@@ -234,6 +247,36 @@ main {
 .star.empty {
   fill: lightgray;
 }
+
+/* --- Menu ---*/
+.user-menu {
+  position: absolute;
+  right: 0;
+  top: 60px;
+  background-color: var(--background-dark);
+  border: 2px solid var(--background-light);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  z-index: 100;
+  min-width: 140px;
+  border-radius: 8px;
+  display: none;
+}
+
+.user-menu button {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 8px 0;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text-color-primary);
+}
+.user-menu button:hover {
+  background: var(--background-light);
+}
+
 
 /* --- Media Queries para Responsividade --- */
 

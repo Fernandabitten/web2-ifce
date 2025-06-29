@@ -13,9 +13,37 @@ const saveButton = document.getElementById("saveButton");
 const title = document.getElementById("title-pg");
 title.textContent = movieId ? "Editar Filme" : "Novo filme";
 const msg = document.getElementById("message");
+const avatar = document.getElementById("avatar");
+const userMenu = document.getElementById("user-menu");
+const logoutBtn = document.getElementById("logout-btn");
+const editProfileBtn = document.getElementById("edit-profile-btn");
+
+// Alterna a exibição do menu ao clicar no avatar
+avatar.addEventListener("click", (e) => {
+  e.stopPropagation();
+  userMenu.style.display =
+    userMenu.style.display === "block" ? "none" : "block";
+});
+
+// Fecha o menu ao clicar fora dele
+document.addEventListener("click", () => {
+  userMenu.style.display = "none";
+});
+
+// Impede que clique dentro do menu feche ele
+userMenu.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+// Função de logout
+logoutBtn.addEventListener("click", () => {
+  logout(); // Chame sua função de logout normalmente
+});
 
 if (movieId) {
-  fetch(`${BASE_API_URL}/movies`)
+  fetch(`${BASE_API_URL}/movies`, {
+    credentials: "include",
+  })
     .then((res) => res.json())
     .then((movies) => {
       const movie = movies.find((m) => String(m.id) === movieId);
@@ -84,7 +112,9 @@ if (saveButton) {
 
     try {
       // Buscar todos os filmes cadastrados
-      const response = await fetch(`${BASE_API_URL}/movies`);
+      const response = await fetch(`${BASE_API_URL}/movies`, {
+        credentials: "include",
+      });
       const movies = await response.json();
 
       // Normalizar o título atual para comparação
@@ -125,6 +155,7 @@ async function addMovie(movieData) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(movieData),
+      credentials: "include",
     });
 
     if (response.ok) {
@@ -146,6 +177,7 @@ async function editMovie(movieData) {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(movieData),
+      credentials: "include",
     });
 
     if (response.ok) {
@@ -174,3 +206,51 @@ function capitalizeFirstLetter(text) {
   if (!text) return "";
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
+
+function capitalizeName(name) {
+  if (!name) return "";
+
+  const preposicoes = ["da", "de", "do", "das", "dos", "e"];
+
+  return name
+    .toLowerCase()
+    .split(" ")
+    .map((word, index) => {
+      // A primeira palavra deve sempre ser capitalizada, mesmo se for uma preposição
+      if (index === 0 || !preposicoes.includes(word)) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      } else {
+        return word;
+      }
+    })
+    .join(" ");
+}
+
+async function showUserName() {
+  try {
+    const response = await fetch(`${BASE_API_URL}/me`, {
+      credentials: "include",
+    });
+    if (response.ok) {
+      const user = await response.json();
+      const nomeFormatado = capitalizeName(user.nome);
+      document.querySelector(
+        ".user strong"
+      ).textContent = `Olá, ${nomeFormatado}!`;
+      // Atualiza imagem do avatar se tiver
+      if (user.avatar) {
+        avatar.src = user.avatar;
+      }
+    }
+  } catch (error) {
+    // Se não estiver logado, redireciona para login
+    window.location.href = "login.html";
+  }
+}
+
+// Redireciona para edição de perfil
+editProfileBtn.addEventListener("click", () => {
+  window.location.href = "profile.html";
+});
+
+showUserName();

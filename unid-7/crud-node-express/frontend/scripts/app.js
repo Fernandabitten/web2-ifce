@@ -9,10 +9,49 @@ const BASE_API_URL = isLocal
 let allMovies = [];
 const list = document.getElementById("list");
 const searchInput = document.getElementById("searchInput");
+const avatar = document.getElementById("avatar");
+const userMenu = document.getElementById("user-menu");
+const logoutBtn = document.getElementById("logout-btn");
+const editProfileBtn = document.getElementById("edit-profile-btn");
+
+// Alterna a exibição do menu ao clicar no avatar
+avatar.addEventListener("click", (e) => {
+  e.stopPropagation();
+  userMenu.style.display =
+    userMenu.style.display === "block" ? "none" : "block";
+});
+
+// Fecha o menu ao clicar fora dele
+document.addEventListener("click", () => {
+  userMenu.style.display = "none";
+});
+
+// Impede que clique dentro do menu feche ele
+userMenu.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+// Função de logout
+logoutBtn.addEventListener("click", () => {
+  logout(); // Chame sua função de logout normalmente
+});
+
+// Redireciona para edição de perfil
+editProfileBtn.addEventListener("click", () => {
+  window.location.href = "profile.html";
+});
 
 async function fetchMovies() {
   try {
-    const response = await fetch(`${BASE_API_URL}/movies`);
+    const response = await fetch(`${BASE_API_URL}/movies`, {
+      credentials: "include", // necessário para enviar cookie de sessão
+    });
+
+    if (response.status === 401) {
+      window.location.href = "login.html";
+      return;
+    }
+
     allMovies = await response.json();
 
     if (!list) return;
@@ -67,6 +106,7 @@ async function deleteMovie(id) {
   try {
     const response = await fetch(`${BASE_API_URL}/movie/${id}`, {
       method: "DELETE",
+      credentials: "include",
     });
     if (response.ok) {
       alert("Filme excluído com sucesso!");
@@ -109,4 +149,53 @@ if (searchInput) {
   });
 }
 
+async function logout() {
+  await fetch(`${BASE_API_URL}/logout`, {
+    method: "POST",
+    credentials: "include",
+  });
+  window.location.href = "login.html";
+}
+
+function capitalizeName(name) {
+  if (!name) return "";
+
+  const preposicoes = ["da", "de", "do", "das", "dos", "e"];
+
+  return name
+    .toLowerCase()
+    .split(" ")
+    .map((word, index) => {
+      // A primeira palavra deve sempre ser capitalizada, mesmo se for uma preposição
+      if (index === 0 || !preposicoes.includes(word)) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      } else {
+        return word;
+      }
+    })
+    .join(" ");
+}
+
+async function showUserName() {
+  try {
+    const response = await fetch(`${BASE_API_URL}/me`, {
+      credentials: "include",
+    });
+    if (response.ok) {
+      const user = await response.json();
+      const nomeFormatado = capitalizeName(user.nome);
+      document.querySelector(
+        ".user strong"
+      ).textContent = `Olá, ${nomeFormatado}!`;
+      // Atualiza imagem do avatar se tiver
+      if (user.avatar) {
+        avatar.src = user.avatar;
+      }
+    }
+  } catch (error) {
+    // Se não estiver logado, redireciona para login
+    window.location.href = "login.html";
+  }
+}
+showUserName();
 fetchMovies();
