@@ -37,7 +37,7 @@ userMenu.addEventListener("click", (e) => {
 
 // Função de logout
 logoutBtn.addEventListener("click", () => {
-  logout(); // Chame sua função de logout normalmente
+  logout();
 });
 
 if (movieId) {
@@ -202,9 +202,12 @@ document.querySelector(".delete-button").addEventListener("click", function () {
   }
 });
 
-function capitalizeFirstLetter(text) {
-  if (!text) return "";
-  return text.charAt(0).toUpperCase() + text.slice(1);
+async function logout() {
+  await fetch(`${BASE_API_URL}/logout`, {
+    method: "POST",
+    credentials: "include",
+  });
+  window.location.href = "login.html";
 }
 
 function capitalizeName(name) {

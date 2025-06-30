@@ -33,7 +33,7 @@ userMenu.addEventListener("click", (e) => {
 
 // Função de logout
 logoutBtn.addEventListener("click", () => {
-  logout(); // Chame sua função de logout normalmente
+  logout();
 });
 
 // Redireciona para edição de perfil
