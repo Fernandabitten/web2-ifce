@@ -14,24 +14,22 @@ const PORT = 3000;
 app.use(fileUpload());
 
 // Habilita o CORS para permitir requisições do frontend
-// app.use(cors());
 const allowedOrigins = [
   "http://127.0.0.1:5500",
   "http://localhost:5500",
-  "https://fernandabitten.github.io", // para produção
+  "https://fernandabitten.github.io",
 ];
 
 app.use(
   cors({
-    origin: "http://127.0.0.1:5500",
-    // origin: function (origin, callback) {
-    //   if (!origin || allowedOrigins.includes(origin)) {
-    //     callback(null, true);
-    //   } else {
-    //     callback(new Error("Não permitido pelo CORS"));
-    //   }
-    // },
-    credentials: true, // permite cookies/sessão
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Não permitido pelo CORS"));
+      }
+    },
+    credentials: true,
   })
 );
 
