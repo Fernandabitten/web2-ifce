@@ -2,7 +2,7 @@ const BASE_API_URL =
   ["localhost", "127.0.0.1"].includes(window.location.hostname) ||
   window.location.hostname.startsWith("192.168.")
     ? "http://localhost:3000"
-    : "https://web2-ifce.onrender.com";
+    : "https://web2-ifce-filmes-backend.onrender.com";
 
 document.querySelector("form").addEventListener("submit", async (e) => {
   e.preventDefault();

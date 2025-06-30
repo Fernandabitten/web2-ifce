@@ -75,7 +75,6 @@ app.post("/login", async (req, res) => {
   if (!user) return res.status(401).json({ error: "Usuário não encontrado" });
 
   const match = await bcrypt.compare(senha, user.senha);
-  console.log("match: ", match);
   if (!match) return res.status(401).json({ error: "Senha incorreta" });
 
   // Salva sessão
@@ -86,7 +85,6 @@ app.post("/login", async (req, res) => {
     papel: user.papel,
     avatar: user.avatar,
   };
-  console.log(" req.session.usuariooo: ", req.session.usuario);
   res.json({ message: "Login bem-sucedidoooo" });
 });
 
@@ -95,7 +93,6 @@ app.get("/me", autenticar, (req, res) => {
 });
 
 function autenticar(req, res, next) {
-  console.log("AUTENTICAR ", req.session);
   if (!req.session.usuario) {
     return res.status(401).json({ error: "Não autenticado" });
   }
@@ -171,12 +168,10 @@ app.put("/movie/:id", autenticar, (req, res) => {
 //Listar filmes do usuario logado, exceto se for admin
 app.get("/movies", autenticar, (req, res) => {
   try {
-    console.log("GET MOVIES ");
     let movies;
     if (req.session.usuario.papel === "admin") {
       // Admin vê tudo
       movies = db.prepare("SELECT * FROM filmes").all();
-      console.log("MOVIES ", movies);
     } else {
       // Usuário comum vê só os seus
       movies = db
@@ -293,65 +288,6 @@ app.post("/atualizar-perfil", autenticar, async (req, res) => {
     res.status(500).json({ error: "Erro interno ao atualizar perfil" });
   }
 });
-// app.post("/atualizar-perfil", autenticar, async (req, res) => {
-//   const { nome, senhaAtual, novaSenha } = req.body;
-//   const id = req.session.usuario.id;
-//   const avatarFile = req.files?.avatar;
-
-//   const user = db.prepare("SELECT * FROM usuarios WHERE id = ?").get(id);
-//   if (!user) return res.status(404).json({ error: "Usuário não encontrado" });
-
-//   // verifica a senha atual
-//   if (senhaAtual && novaSenha) {
-//     const match = await bcrypt.compare(senhaAtual, user.senha);
-//     if (!match) return res.status(401).json({ error: "Senha atual incorreta" });
-//   }
-
-//   let avatarUrl = user.avatar;
-//   if (avatarFile) {
-//     const fileName = `avatars/${id}_${Date.now()}.${avatarFile.name
-//       .split(".")
-//       .pop()}`;
-//     const { error } = await supabase.storage
-//       .from("perfil")
-//       .upload(fileName, avatarFile.data, {
-//         contentType: avatarFile.mimetype,
-//         upsert: true,
-//       });
-//     if (error) return res.status(500).json({ error: "Erro ao enviar imagem" });
-
-//     const { data } = supabase.storage.from("perfil").getPublicUrl(fileName);
-//     avatarUrl = data.publicUrl;
-//   }
-
-//   const campos = [];
-//   const valores = [];
-//   if (nome) {
-//     campos.push("nome = ?");
-//     valores.push(nome);
-//   }
-//   if (novaSenha) {
-//     const hashNovaSenha = await bcrypt.hash(novaSenha, 10);
-//     campos.push("senha = ?");
-//     valores.push(hashNovaSenha);
-//   }
-//   if (avatarUrl) {
-//     campos.push("avatar = ?");
-//     valores.push(avatarUrl);
-//   }
-//   if (campos.length === 0)
-//     return res.status(400).json({ error: "Nada para atualizar" });
-
-//   const sql = `UPDATE usuarios SET ${campos.join(", ")} WHERE id = ?`;
-//   valores.push(id);
-//   db.prepare(sql).run(...valores);
-
-//   if (nome) req.session.usuario.nome = nome;
-//   if (avatarUrl) req.session.usuario.avatar = avatarUrl;
-
-//   res.json({ message: "Perfil atualizado", avatar: avatarUrl });
-// });
-
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });

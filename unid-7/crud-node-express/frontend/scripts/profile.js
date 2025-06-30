@@ -1,3 +1,11 @@
+const isLocal =
+  ["localhost", "127.0.0.1"].includes(window.location.hostname) ||
+  window.location.hostname.startsWith("192.168.");
+
+const BASE_API_URL = isLocal
+  ? "http://localhost:3000"
+  : "https://web2-ifce-filmes-backend.onrender.com";
+
 const fileInput = document.getElementById("fileInput");
 const avatar = document.getElementById("avatar");
 const form = document.querySelector(".form");
@@ -8,7 +16,7 @@ const inputNovaSenha = form.children[3];
 
 async function carregarPerfil() {
   try {
-    const res = await fetch("http://localhost:3000/me", {
+    const res = await fetch(`${BASE_API_URL}/me`, {
       credentials: "include",
     });
 
@@ -59,7 +67,7 @@ form.addEventListener("submit", async (e) => {
   if (avatarFile) formData.append("avatar", avatarFile);
 
   try {
-    const res = await fetch("http://localhost:3000/atualizar-perfil", {
+    const res = await fetch(`${BASE_API_URL}/atualizar-perfil`, {
       method: "POST",
       body: formData,
       credentials: "include",

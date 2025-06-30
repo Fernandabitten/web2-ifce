@@ -4,7 +4,7 @@ const isLocal =
 
 const BASE_API_URL = isLocal
   ? "http://localhost:3000"
-  : "https://web2-ifce.onrender.com";
+  : "https://web2-ifce-filmes-backend.onrender.com";
 
 const urlParams = new URLSearchParams(window.location.search);
 const movieId = urlParams.get("id");
