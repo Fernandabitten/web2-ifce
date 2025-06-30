@@ -6,9 +6,13 @@ const db = require("./database");
 const fileUpload = require("express-fileupload");
 const supabase = require("./supabaseClient");
 const path = require("path");
+require("dotenv").config();
 
 const app = express();
+app.set("trust proxy", 1);
 const PORT = 3000;
+
+const isProduction = process.env.NODE_ENV === "production";
 
 // adiciona suporte a upload de arquivos
 app.use(fileUpload());
@@ -41,7 +45,11 @@ app.use(
     secret: "segredo-super-seguro",
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false }, // true em produção com HTTPS
+    cookie: {
+      httpOnly: isProduction,
+      secure: isProduction,
+      sameSite: isProduction ? "none" : "",
+    },
   })
 );
 
@@ -215,16 +223,16 @@ app.post("/atualizar-perfil", autenticar, async (req, res) => {
     const campos = [];
     const valores = [];
 
-    // 📷 Se veio uma nova imagem
+    // Se veio uma nova imagem
     if (req.files?.avatar) {
-      // 🧽 Remove imagem antiga
+      // Remove imagem antiga
       const avatarAntigo = req.session.usuario.avatar;
       if (avatarAntigo) {
         const caminhoAntigo = avatarAntigo.split("/").slice(-2).join("/"); // ex: avatars/user_1_172522.jpg
         await supabase.storage.from("perfil").remove([caminhoAntigo]);
       }
 
-      // 📤 Upload da nova
+      // Upload da nova
       const avatarFile = req.files.avatar;
       const ext = path.extname(avatarFile.name);
       const fileName = `user_${id}_${Date.now()}${ext}`;
@@ -250,13 +258,13 @@ app.post("/atualizar-perfil", autenticar, async (req, res) => {
       valores.push(avatarUrl);
     }
 
-    // 🧑 Nome
+    // Nome
     if (nome) {
       campos.push("nome = ?");
       valores.push(nome);
     }
 
-    // 🔒 Senha
+    // Senha
     if (senhaAtual && novaSenha) {
       const user = db.prepare("SELECT * FROM usuarios WHERE id = ?").get(id);
       const match = await bcrypt.compare(senhaAtual, user.senha);
@@ -276,7 +284,7 @@ app.post("/atualizar-perfil", autenticar, async (req, res) => {
     valores.push(id);
     db.prepare(sql).run(...valores);
 
-    // 🔄 Atualiza a sessão
+    // Atualiza a sessão
     if (nome) req.session.usuario.nome = nome;
     if (avatarUrl) req.session.usuario.avatar = avatarUrl;
 

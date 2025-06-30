@@ -3,7 +3,7 @@ const isLocal =
   window.location.hostname.startsWith("192.168.");
 
 const BASE_API_URL = isLocal
-  ? "http://localhost:3000"
+  ? `http://${window.location.hostname}:3000`
   : "https://web2-ifce-filmes-backend.onrender.com";
 
 const fileInput = document.getElementById("fileInput");
