@@ -1,6 +1,16 @@
 # CRUD de Filmes – (Unidade 7 – Autenticação, Sessões e Proteção de Rotas)
 
-![Status](https://img.shields.io/badge/progresso-100%25-green)
+![Status](https://img.shields.io/badge/progresso-100%25-green?style=for-the-badge)
+
+![HTML5](https://img.shields.io/badge/HTML5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=000)
+![Node.js](https://img.shields.io/badge/Node.js-%2343853D.svg?style=for-the-badge&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-000?style=for-the-badge&logo=express&logoColor=white)
+![express-session](https://img.shields.io/badge/express--session-ff69b4?style=for-the-badge)
+![bcrypt](https://img.shields.io/badge/bcrypt-4B8BBE?style=for-the-badge)
+![SQLite](https://img.shields.io/badge/SQLite-07405E.svg?style=for-the-badge&logo=sqlite&logoColor=white)
+![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=000)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E.svg?style=for-the-badge&logo=supabase&logoColor=white)
 
 👉 [Acesse o deploy aqui!!](https://fernandabitten.github.io/web2-ifce/unid-7/crud-node-express/frontend/login.html)
 
@@ -216,7 +226,14 @@ Você deve ter uma conta <a href="https://www.figma.com/">Figma</a> para acessá
 <details>
   <summary>Ver Screenshots</summary>
   <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-    <img src="https://github.com/user-attachments/assets/8832bb27-c05a-4051-ae42-8001963541c7" alt="Screenshot 1" style="width: 300px;">
-    <img src="https://github.com/user-attachments/assets/05378720-003c-40f6-8cf4-f2bee8f9e4a9" alt="Screenshot 2" style="width: 300px;">
+    <img src="https://github.com/user-attachments/assets/24fe95b3-8ca2-4b4e-a25c-5e47c238d240" alt="Screenshot 1" style="width: 300px;">
+    <img src="https://github.com/user-attachments/assets/63781067-7d3b-45bd-9489-0c42f920e46c" alt="Screenshot 1" style="width: 300px;">
+    <img src="https://github.com/user-attachments/assets/bcb6a0c8-474b-498c-a2e4-7825a587d266" alt="Screenshot 1" style="width: 300px;">
+    <img src="https://github.com/user-attachments/assets/0bd25f6e-cead-43d0-963e-3d2dff22e02d" alt="Screenshot 2" style="width: 300px;">
+    <img src="https://github.com/user-attachments/assets/240f5250-2b2b-4de9-83f8-8fe66be05978" alt="Screenshot 2" style="width: 300px;">
   </div>
 </details>
+![image]()
+
+
+
