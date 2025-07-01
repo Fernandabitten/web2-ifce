@@ -162,6 +162,7 @@ Ou acesse diretamente o deploy no GitHub Pages:
 ---
 
 ## Fluxo de Autenticação e Sessão
+**Obs** : Para testar o fluxo do usuaário admin use admin@email.com - senha: 123
 
 **1. Cadastro**
 
@@ -233,7 +234,3 @@ Você deve ter uma conta <a href="https://www.figma.com/">Figma</a> para acessá
     <img src="https://github.com/user-attachments/assets/240f5250-2b2b-4de9-83f8-8fe66be05978" alt="Screenshot 2" style="width: 300px;">
   </div>
 </details>
-![image]()
-
-
-
