@@ -1,21 +1,27 @@
-# CRUD de Filmes – (Unidade 5 – HTTP e REST API)
+# CRUD de Filmes – (Unidade 7 – Autenticação, Sessões e Proteção de Rotas)
 
 ![Status](https://img.shields.io/badge/progresso-100%25-green)
 
-👉 [Acesse o deploy aqui!!](https://fernandabitten.github.io/web2-ifce/crud-node-express/frontend/index.html)
+👉 [Acesse o deploy aqui!!](https://fernandabitten.github.io/web2-ifce/unid-7/crud-node-express/frontend/login.html)
 
-Este projeto foi desenvolvido como parte da **Unidade 5** da disciplina **Desenvolvimento Web II** do **IFCE**, cujo objetivo é aplicar na prática os conceitos de **requisições HTTP** e **APIs RESTful**, utilizando os métodos **GET**, **POST**, **PUT** e **DELETE** para manipular recursos via uma interface web.
-
-## Objetivo da Atividade
-
-Construir um sistema completo (frontend e backend) que permita ao usuário **cadastrar, visualizar, atualizar e excluir filmes ou séries favoritos**, com base nos conceitos de APIs REST e operações CRUD.
-
----
+Este projeto foi desenvolvido como parte das **Unidades 5, 6 e 7** da disciplina **Desenvolvimento Web II** do **IFCE**, cujo objetivo é aplicar na prática os conceitos de **requisições HTTP** e **APIs RESTful**, utilizando os métodos **GET**, **POST**, **PUT** e **DELETE** para manipular recursos via uma interface web. **Persistencia dos dados com SQLite e Node.js** e **Autenticação, Sessões e Proteção de Rotas, utilizando bcrypt para senhas e express-session para controle de sessões.**
+Conta com um sistema completo de autenticação e autorização de usuários, utilizando bcrypt para senhas e express-session para controle de sessões.
 
 ## Tecnologias Utilizadas
 
-- **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
-- **Backend**: Node.js, Express
+- **Frontend**:
+  HTML5,
+  CSS3,
+  JavaScript (Vanilla)
+- **Backend**:
+  Node.js,
+  Express.js,
+  SQLite (armazenamento local de dados),
+  bcrypt (hash de senhas),
+  express-session (gerenciamento de sessões),
+  dotenv (variáveis de ambiente)
+- **Armazenamento de arquivos (avatar)**:
+  Supabase Storage
 - **Hospedagem**:
   - Frontend: GitHub Pages
   - Backend: Render
@@ -24,30 +30,47 @@ Construir um sistema completo (frontend e backend) que permita ao usuário **cad
 
 ## Funcionalidades
 
+**CRUD de Filmes/Séries (unidade 5)**
+
 - [x] Adicionar novo filme/série
 - [x] Listar todos os registros
 - [x] Buscar filme/série por ID
 - [x] Atualizar informações
 - [x] Excluir filme/série por ID
 
----
+**Persistência com SQLite (Unidade 6)**
 
-### 🧾 Informações de cada filme/série:
+- [x] Armazenamento dos filmes em banco de dados SQLite
+- [x] Criação da tabela filmes com campos id, titulo, genero e nota
+- [x] Validação de nota entre 0 e 10
+- [x] Substituição completa da lógica de array por comandos SQL
 
-- **ID** (gerado automaticamente)
-- **Título**
-- **Gênero**
-- **Nota** (de 0 a 10)
+**Autenticação e Sessão (Unidade 7)**
+
+- [x] Cadastro de usuário com hash seguro da senha (bcrypt)
+- [x] Login com verificação de senha e criação de sessão
+- [x] Logout e manutenção da sessão do usuário
+- [x] Proteção de rotas para garantir acesso apenas a usuários autenticados
+- [x] Sistema de autorização para que apenas administradores ou dono do filme possam excluir filmes
+- [x] Upload de imagem de avatar para o Supabase com troca automática de imagem
+- [x] Interface dinâmica com saudação ao usuário logado e foto de perfil
+
+**Upload e Avatar**
+
+- [x] Upload de imagem de avatar para o Supabase Storage
+- [x] Substituição automática da imagem anterior
+- [x] Interface dinâmica com saudação personalizada e exibição do avatar do usuário
 
 ---
 
 ## Regras do Sistema
 
-- O ID é único e gerado automaticamente no backend.
+- O ID de cada filme ou usuário é gerado automaticamente no backend via SQLite.
 - A nota deve ser obrigatoriamente entre 0 e 10.
-- Os dados são armazenados em **memória**, ou seja, serão apagados quando o servidor reiniciar.
-- Todos os campos devem estar acessíveis e organizados no frontend.
-- A interface permite buscar, editar e remover registros com facilidade.
+- Os dados são armazenados de forma persistente no banco de dados SQLite (filmes.db), garantindo que não sejam perdidos ao reiniciar o servidor.
+- A interface web permite buscar, editar e remover registros com facilidade.
+- Apenas usuários autenticados podem acessar as funcionalidades principais.
+- Apenas usuários administradores ou donos do conteúdo podem excluir filmes.
 
 ---
 
@@ -58,47 +81,117 @@ crud-node-express/
 ├── backend/
 │   ├── package-lock.json
 │   ├── package.json
-│   └── server.js                  # Servidor Node.js
-└── frontend/
-    ├── img/                       # Imagens utilizadas na interface
-    ├── scripts/                   # Scripts JavaScript do frontend
-    │   ├── app.js                 # Lida com a listagem, busca e exclusão de filmes/séries
-    │   └── new-movie.js           # Lida com o cadastro e edição de filmes/séries
-    ├── css/                       # Arquivos CSS utilizados pela aplicação
-    │   ├── styles-new-movie.css   # Estilização da página principal (index.html)
-    │   └── styles.css             # Estilização da página de cadastro/edição (new-movie.html)
-    ├── index.html                 # Página inicial: exibe a lista de filmes/séries e opções
-    └── new-movie.html             # Página para cadastrar ou editar um filme/série
+│   ├── filmes.db                 # Banco de dados SQLite com os filmes e usuários
+│   ├── database.js               # Conexão com o SQLite e criação de tabelas
+│   ├── supabase.js               # Upload/exclusão de avatar no Supabase Storage
+│   └── server.js                 # Servidor Node.js
+├── frontend/
+│   ├── img/                      # Imagens utilizadas na interface
+│   ├── scripts/                  # Scripts JavaScript do frontend
+│   │   ├── app.js                # Lida com listagem, busca e exclusão de filmes
+│   │   ├── login.js              # Tela de login e controle de sessão
+│   │   ├── register.js           # Tela de cadastro de novo usuário
+│   │   ├── new-movie.js          # Cadastro/edição de filmes
+│   │   └── profile.js            # Edição de perfil e troca de avatar
+│   ├── css/                      # Arquivos CSS utilizados pela aplicação
+│   ├── index.html                # Página principal (listar filmes/séries)
+│   ├── login.html                # Página de login
+│   ├── register.html             # Página de cadastro
+│   ├── profile.html              # Página de perfil do usuário
+│   └── new-movie.html            # Página para adicionar/editar filmes
+│
+└── docs/
+    └── Espe_Caso_de_Uso_Crud_de_Filmes.pdf  # Documento de especificação
 ```
 
-## Como executar
+## Como Rodar o Projeto Localmente
 
-1. Clone o repositório e acesse a pasta específica do projeto
-   
-   `git clone https://github.com/Fernandabitten/web2-ifce.git`
-   
-2. Acesse a pasta do projeto:
-   
-   `cd crud-node-express`
-   
-3. Vá para a pasta backend, instale as dependências e inicie o servidor:
-   > `cd backend`
-   
-   > `npm install`
-   
-   > `node server.js`
+✅ Requisitos:
 
-4. Abra o arquivo index.html da pasta frontend no navegador para testar a interface.
+- Node.js instalado
+- Git instalado
+- Conta no Supabase (apenas se desejar usar upload de avatar)
+- Conta no Render (para deploy do backend)
+
+```
+# 1. Clone o repositório
+git clone https://github.com/Fernandabitten/web2-ifce.git
+
+# 2. Vá para a pasta do projeto
+cd unid-7/crud-node-express/backend
+
+# 3. Instale as dependências do backend
+npm install
+
+# 4. Crie um arquivo `.env` com o conteúdo abaixo:
+SUPABASE_URL=URL_DO_SEU_SUPABASE
+SUPABASE_KEY=CHAVE_DO_SEU_SUPABASE
+NODE_ENV=development
+SESSION_SECRET=sua_senha_secreta_segura
+
+# 5. Inicie o servidor
+npm start
+
+```
+
+> O backend estará rodando em: http://localhost:3000
+
+**Executar o Frontend**
+No seu navegador, abra o seguinte arquivo:
+`http://localhost:5500/unid-7/crud-node-express/frontend/login.html`
+Ou acesse diretamente o deploy no GitHub Pages:
+👉 https://fernandabitten.github.io/web2-ifce/unid-7/crud-node-express/frontend/login.html
 
 ---
 
 ## Links Importantes
 
-- 🔗 Frontend: [Deploy no GitHub Pages](https://fernandabitten.github.io/web2-ifce/crud-node-express/frontend/index.html)
-- 🔗 Backend: [Deploy no Render](https://web2-ifce.onrender.com/)
+- 🔗 Frontend: [Deploy no GitHub Pages](https://fernandabitten.github.io/web2-ifce/unid-7/crud-node-express/frontend/login.html)
+- 🔗 Backend: [Deploy no Render](https://web2-ifce-filmes-backend.onrender.com)
 
 ---
-## 📄 Documentação
+
+## Fluxo de Autenticação e Sessão
+
+**1. Cadastro**
+
+- Acesse a página register.html (criar conta)
+- Preencha nome, email, senha e clique em “Cadastrar”
+- O sistema cria o usuário e redireciona para o login
+
+**2. Login**
+
+- Acesse login.html
+- Preencha email e senha
+- Se estiver correto, você será redirecionado à index.html já logado
+- A saudação e avatar do usuário são carregados no topo
+
+**3. Sessão**
+
+- Após o login, o cookie de sessão é criado automaticamente
+- Em rotas protegidas (/movies, /me, /movie/:id), se não houver sessão, a API retorna 401 Unauthorized
+- Se o cookie estiver presente, o usuário continua autenticado mesmo ao atualizar a página
+
+**4. Logout**
+
+- Clique no avatar > botão "Sair"
+- O cookie de sessão é destruído e o usuário é redirecionado para o login
+
+**5. Proteção de Rotas**
+
+- Apenas usuários autenticados podem acessar ou manipular os filmes
+- Se não autenticado, qualquer tentativa retorna 401
+- Exclusão de filmes só é permitida para usuários dono do filme ou com papel "admin". Caso contrário, retorna 403 Forbidden
+- Usuários com papel admin tem acesso aos filmes de todos os usuários
+
+**6. Upload de Avatar**
+
+- Usuários podem alterar sua foto de perfil em profile.html
+- A imagem é enviada para o Supabase e salva com um nome único
+- O backend remove a imagem anterior do Supabase automaticamente ao atualizar
+- A nova imagem aparece instantaneamente após salvar
+
+## Documentação
 
 O projeto conta com uma especificação completa de casos de uso, descrevendo detalhadamente os fluxos de cadastro, listagem, edição e exclusão de filmes ou séries, além de regras de negócio e requisitos não funcionais.
 
