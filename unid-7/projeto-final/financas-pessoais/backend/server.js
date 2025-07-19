@@ -27,6 +27,7 @@ const allowedOrigins = [
   "http://127.0.0.1:5500",
   "http://localhost:5500",
   "https://fernandabitten.github.io",
+  "https://financas-pessoais-nu-ten.vercel.app",
 ];
 
 app.use(
