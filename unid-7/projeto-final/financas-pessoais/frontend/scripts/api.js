@@ -4,7 +4,7 @@ const isLocal =
 
 export const BASE_API_URL = isLocal
   ? `http://${window.location.hostname}:3000`
-  : "https://backend-financas-pessoais.onrender.com/";
+  : "https://backend-financas-pessoais.onrender.com";
 
 export async function fetchComErro(
   url,
