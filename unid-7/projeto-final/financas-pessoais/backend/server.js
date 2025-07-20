@@ -5,14 +5,15 @@ const MemoryStore = require("memorystore")(session);
 const cors = require("cors");
 require("dotenv").config();
 
+// Inicialização
+const app = express();
+app.set("trust proxy", 1);
+const PORT = process.env.PORT || 3000;
+const isProduction = process.env.NODE_ENV === "production";
+
 // Importação de rotas
 const authRoutes = require("./routes/authRoutes");
 const transactionRoutes = require("./routes/transactionsRoutes");
-
-// Inicialização
-const app = express();
-const PORT = process.env.PORT || 3000;
-const isProduction = process.env.NODE_ENV === "production";
 
 // Checagem de variáveis obrigatórias
 if (!process.env.SESSION_SECRET) {
