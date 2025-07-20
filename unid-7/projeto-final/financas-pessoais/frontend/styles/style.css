@@ -49,7 +49,7 @@ ul {
 .container {
   display: grid;
   grid-template-columns: 240px 1fr;
-  max-width: 1400px;
+  max-width: 1800px;
   margin: 0 auto;
 }
 
@@ -167,7 +167,7 @@ ul {
   display: flex;
   flex-direction: column;
   flex: 1 1 300px;
-  max-width: 500px;
+  max-width: 800px;
   min-width: 250px;
   background-color: var(--color-secondary);
   padding: 1rem;
