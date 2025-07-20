@@ -408,6 +408,8 @@ function criarGraficoPeriodo(ctx, entradas, saidas, ano, transacoesAno) {
           },
         },
         tooltip: {
+          // Largura máxima para permitir quebra de linha
+          maxWidth: 300,
           backgroundColor: colorBg,
           titleColor: colorText,
           bodyColor: colorText,
@@ -416,6 +418,11 @@ function criarGraficoPeriodo(ctx, entradas, saidas, ano, transacoesAno) {
           usePointStyle: true,
           boxPadding: 5,
           bodyPointStyle: "circle",
+          bodyFont: {
+            size: 12,
+            weight: "400",
+            lineHeight: 1.5,
+          },
           callbacks: {
             title: (context) => `Mês: ${context[0].label}`,
             beforeBody: (context) => {
@@ -448,13 +455,15 @@ function criarGraficoPeriodo(ctx, entradas, saidas, ano, transacoesAno) {
                   const valor = Number(t.valor);
                   mapa[t.categoria] = (mapa[t.categoria] || 0) + valor;
                 }
-                return Object.entries(mapa).map(
-                  ([categoria, valor]) =>
-                    `- ${capitalize(categoria)}: ${(
-                      (valor / total) *
-                      100
-                    ).toFixed(1)}%`
-                );
+                return Object.entries(mapa)
+                  .sort(([a], [b]) => a.localeCompare(b)) // <-- ordenação alfabética
+                  .map(
+                    ([categoria, valor]) =>
+                      `- ${capitalize(categoria)}: ${(
+                        (valor / total) *
+                        100
+                      ).toFixed(1)}%`
+                  );
               };
 
               return [

@@ -65,6 +65,12 @@ ul {
   transition: opacity 3s ease, transform 3s ease;
 }
 
+.chartjs-tooltip {
+  white-space: pre-wrap !important;
+  max-width: 350px;
+  word-break: break-word;
+}
+
 /* Sidebar ocupa toda a altura */
 #sidebar-placeholder {
   grid-column: 1;
