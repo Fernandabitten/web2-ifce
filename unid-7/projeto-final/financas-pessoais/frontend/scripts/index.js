@@ -14,7 +14,15 @@ async function carregarPagina(nome) {
     if (!res.ok) throw new Error("Página não encontrada");
 
     const html = await res.text();
+
+    // Aplica efeito suave
+    mainContent.classList.remove("fade-enter", "fade-enter-active");
+    void mainContent.offsetWidth; // força reflow (necessário para reiniciar animação)
+
     mainContent.innerHTML = html;
+    // Aplica efeito suave
+    mainContent.classList.remove("fade-enter", "fade-enter-active");
+    void mainContent.offsetWidth; // força reflow (necessário para reiniciar animação)
 
     // Atualiza o título da página
     document.title = `Finanças Pessoais | ${capitalizar(nome)}`;

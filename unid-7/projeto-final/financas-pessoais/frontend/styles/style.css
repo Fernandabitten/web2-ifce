@@ -53,6 +53,18 @@ ul {
   margin: 0 auto;
 }
 
+/* Animação suave de fade-in para conteúdo dinâmico */
+.fade-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 3s ease, transform 3s ease;
+}
+
 /* Sidebar ocupa toda a altura */
 #sidebar-placeholder {
   grid-column: 1;
