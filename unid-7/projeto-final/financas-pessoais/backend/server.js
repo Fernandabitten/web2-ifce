@@ -1,10 +1,11 @@
 // Importações principais
 const express = require("express");
 const session = require("express-session");
+const MemoryStore = require("memorystore")(session);
 const cors = require("cors");
 require("dotenv").config();
 
-// Rotas
+// Importação de rotas
 const authRoutes = require("./routes/authRoutes");
 const transactionRoutes = require("./routes/transactionsRoutes");
 
@@ -13,16 +14,16 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const isProduction = process.env.NODE_ENV === "production";
 
-// Verificação de variáveis obrigatórias
+// Checagem de variáveis obrigatórias
 if (!process.env.SESSION_SECRET) {
   console.error("Erro: SESSION_SECRET não definido.");
   process.exit(1);
 }
 
-// Middlewares
+// Middlewares globais
 app.use(express.json());
 
-// CORS configurado com origens permitidas
+// CORS com credenciais e domínios permitidos
 const allowedOrigins = [
   "http://127.0.0.1:5500",
   "http://localhost:5500",
@@ -36,31 +37,34 @@ app.use(
       if (!origin || allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
-      return callback(new Error("Origem não permitida pelo CORS"));
+      callback(new Error("Origem não permitida pelo CORS"));
     },
     credentials: true,
   })
 );
 
-// Sessão
+// Session Store (memorystore evita memory leak, ideal para dev/single host)
 app.use(
   session({
+    store: new MemoryStore({ checkPeriod: 86400000 }), // Limpa sessões expiradas a cada 24h
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      secure: isProduction,
-      sameSite: isProduction ? "none" : "lax",
+      secure: isProduction, // true em produção (HTTPS), false em dev (HTTP)
+      sameSite: isProduction ? "none" : "lax", // "none" p/ domínios separados, "lax" p/ dev local
+      maxAge: 86400000, // duração do cookie: 24h
     },
   })
 );
 
-// Rotas
+// Rotas públicas simples
 app.get("/", (req, res) => {
   res.json({ message: "Hello!" });
 });
 
+// Rotas privadas/autenticadas
 app.use(authRoutes);
 app.use(transactionRoutes);
 
