@@ -86,6 +86,7 @@ async function carregarRecomendacao() {
 
   document.getElementById("gerar-explicacao").onclick = async () => {
     const modal = document.getElementById("modal-explicacao");
+    document.body.classList.add("modal-aberto");
     const conteudo = document.getElementById("conteudo-modal");
 
     modal.classList.remove("oculto");
@@ -161,6 +162,7 @@ async function carregarRecomendacao() {
 
   document.getElementById("fechar-modal").onclick = () => {
     document.getElementById("modal-explicacao").classList.add("oculto");
+    document.body.classList.remove("modal-aberto");
   };
 }
 

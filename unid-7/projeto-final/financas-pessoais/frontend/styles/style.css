@@ -105,6 +105,7 @@ ul {
   position: fixed;
   width: 240px;
   overflow-y: auto; /* rolagem própria se necessário */
+  z-index: 1;
 }
 
 .dashboard {
@@ -112,8 +113,8 @@ ul {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  // margin-left: 240px; /* espaço reservado para sidebar fixa */
   overflow: hidden; /* impede que a dashboard inteira role */
+  z-index: 2;
 }
 
 /* Conteúdo rolável */
