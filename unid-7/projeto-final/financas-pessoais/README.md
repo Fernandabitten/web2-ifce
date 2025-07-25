@@ -14,7 +14,7 @@
 ![Render](https://img.shields.io/badge/Render-46E3B7?&logo=render&logoColor=000)
 ![Gemini 2.0 Flash](https://img.shields.io/badge/Gemini%202.0%20Flash-4285F4?&logo=google&logoColor=white)
 
-👉 [Acesse o deploy aqui!!](https://fernandabitten.github.io/financas-pessoais/frontend/login.html)
+👉 [Acesse o deploy aqui!!](https://financas-pessoais-nu-ten.vercel.app/login.html)
 
 ## Sobre o projeto
 
