@@ -14,6 +14,7 @@ const isProduction = process.env.NODE_ENV === "production";
 // Importação de rotas
 const authRoutes = require("./routes/authRoutes");
 const transactionRoutes = require("./routes/transactionsRoutes");
+const iaServiceRoutes = require("./routes/iaServiceRoutes");
 
 // Checagem de variáveis obrigatórias
 if (!process.env.SESSION_SECRET) {
@@ -68,6 +69,7 @@ app.get("/", (req, res) => {
 // Rotas privadas/autenticadas
 app.use(authRoutes);
 app.use(transactionRoutes);
+app.use(iaServiceRoutes);
 
 // Inicialização do servidor
 app.listen(PORT, () => {

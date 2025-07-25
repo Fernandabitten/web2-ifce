@@ -45,6 +45,29 @@ ul {
   border: 0;
 }
 
+.btn {
+  border-radius: 6px;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn.verde {
+  background-color: var(--color-success);
+  border: none;
+}
+
+.btn.branco {
+  background: transparent;
+  border: 1px solid var(--color-text);
+}
+
+.btn.branco:hover {
+  background: var(--color-secondary);
+}
+
 /* Layout principal */
 .container {
   display: grid;
@@ -213,6 +236,14 @@ ul {
   margin-top: 5rem;
 }
 
+.section-table {
+  padding-left: 2rem;
+}
+
+#tabela-placeholder {
+  margin-top: -1rem;
+}
+
 .oculto {
   display: none !important;
 }
@@ -237,6 +268,33 @@ ul {
   background: none;
   border: none;
   padding: 0.4rem;
+}
+
+.modal-fechar {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-conteudo {
+  background-color: var(--color-secondary);
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
 }
 
 /* --- Media Queries para Responsividade --- */

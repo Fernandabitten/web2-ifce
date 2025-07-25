@@ -25,6 +25,12 @@
       <h3><span id="saldo">0,00</span></h3>
     </article>
   </section>
+  <section class="cards">
+    <article id="card-recomendacao" class="card">
+      <p>Recomendação inteligente aparecerá aqui!</p>
+    </article>
+    <button id="gerar-explicacao" class="btn branco">Insight Financeiro</button>
+  </section>
 
   <!-- Gráficos -->
   <section id="charts-container" class="charts">
@@ -49,10 +55,28 @@
   </p>
 
   <!-- Tabela de lançamentos -->
-  <div
-    id="tabela-placeholder"
-    data-acao="false"
-    data-total="false"
-    aria-label="Tabela de lançamentos"
-  ></div>
+  <section>
+    <div class="section-table">
+      <h3 id="tabela-lancamentos-titulo">Lançamentos</h3>
+      <button id="baixarLancamentos" class="btn branco">
+        <i class="fa-solid fa-file-csv"></i>
+        Baixar Todos os lançamentos
+      </button>
+    </div>
+
+    <div
+      id="tabela-placeholder"
+      data-acao="false"
+      data-total="false"
+      aria-label="Tabela de lançamentos"
+    ></div>
+  </section>
+
+  <div id="modal-explicacao" class="modal oculto">
+    <div class="modal-conteudo">
+      <span class="modal-fechar" id="fechar-modal">&times;</span>
+      <h2>Pila explica</h2>
+      <div id="conteudo-modal">Carregando explicação...</div>
+    </div>
+  </div>
 </div>

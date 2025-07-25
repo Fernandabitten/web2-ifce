@@ -1,3 +1,4 @@
+import { BASE_API_URL } from "./api.js";
 import { carregarComponente } from "./components.js";
 import { ativarInfoBar } from "../components/infoBar/info-bar.js";
 import { ativarTabela } from "../components/table/table.js";
@@ -59,6 +60,108 @@ export async function iniciar() {
       h4Periodo,
     });
   });
+}
+
+async function carregarRecomendacao() {
+  try {
+    const { anoSelecionado, mesSelecionado, transacoesMesAno } =
+      ultimoStateDashboard;
+    const res = await fetch(`${BASE_API_URL}/recomendacoes`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        transacoes: transacoesMesAno,
+        ano: anoSelecionado,
+        mes: mesSelecionado === "todos" ? null : Number(mesSelecionado),
+      }),
+    });
+    const data = await res.json();
+    document.getElementById("card-recomendacao").innerText = data.recomendacao;
+  } catch (error) {
+    console.error("Erro ao recarregar transações:", error);
+  }
+
+  document.getElementById("gerar-explicacao").onclick = async () => {
+    const modal = document.getElementById("modal-explicacao");
+    const conteudo = document.getElementById("conteudo-modal");
+
+    modal.classList.remove("oculto");
+    conteudo.innerHTML = "<em>Carregando explicação...</em>";
+
+    try {
+      const res = await fetch(`${BASE_API_URL}/resumo-ia`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          transacoes: ultimoStateDashboard.transacoesMesAno,
+          ano: ultimoStateDashboard.anoSelecionado,
+          mes:
+            ultimoStateDashboard.mesSelecionado === "todos"
+              ? null
+              : Number(ultimoStateDashboard.mesSelecionado),
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!data || !data.resumo) {
+        conteudo.innerHTML = "Nenhuma explicação disponível.";
+        return;
+      }
+
+      // Montar HTML formatado
+      const { resumoFinanceiro, sugestoes, detalhes } = data.resumo;
+
+      const formatarCategorias = (categorias) =>
+        categorias
+          .slice(0, 3) // mostrar só as 3 principais
+          .map(
+            (cat) =>
+              `<li><strong>${
+                cat.categoria
+              }:</strong> R$ ${cat.valor.toLocaleString("pt-BR", {
+                minimumFractionDigits: 2,
+              })}</li>`
+          )
+          .join("");
+
+      const html = `
+      <p>${resumoFinanceiro}</p>
+      <br>
+      <p><strong>Principais fontes de receita:</strong></p>
+      <ul>${formatarCategorias(detalhes?.entradas?.categorias || [])}</ul>  
+      <br>      
+      <p><strong>Maiores despesas:</strong></p>
+      <ul>${formatarCategorias(detalhes?.saidas?.categorias || [])}</ul>
+      <br>      
+      ${
+        sugestoes?.length
+          ? `
+        <p><strong>Sugestões do Pila:</strong></p>
+        <ul>
+          ${sugestoes.map((s) => `<li>${s}</li> <br>`).join("")}
+        </ul>
+      `
+          : ""
+      }
+    `;
+
+      conteudo.innerHTML = html;
+    } catch (e) {
+      conteudo.innerHTML = "Não foi possível carregar a explicação no momento.";
+      console.error(e);
+    }
+  };
+
+  document.getElementById("fechar-modal").onclick = () => {
+    document.getElementById("modal-explicacao").classList.add("oculto");
+  };
 }
 
 // Função principal de renderização
@@ -132,6 +235,7 @@ function renderizarDashboard(params) {
     anoSelecionado,
     transacoesAno
   );
+  carregarRecomendacao();
 }
 
 // Ouve a troca do tema pelo evento customizado
@@ -487,6 +591,26 @@ function criarGraficoPeriodo(ctx, entradas, saidas, ano, transacoesAno) {
     },
   });
 }
+
+document.getElementById("baixarLancamentos").addEventListener("click", () => {
+  console.log("clicouuu");
+  fetch(`${BASE_API_URL}/baixar`, {
+    credentials: "include",
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error("Erro ao baixar");
+      return res.blob();
+    })
+    .then((blob) => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "lancamentos.csv";
+      a.click();
+      window.URL.revokeObjectURL(url);
+    })
+    .catch((err) => alert("Erro ao baixar: " + err.message));
+});
 
 window.addEventListener("resize", () => {
   if (chartCategorias && ultimoStateDashboard) {

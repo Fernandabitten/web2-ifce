@@ -73,3 +73,33 @@ exports.deletar = (req, res) => {
     res.status(500).json({ erro: "Erro ao excluir transação" });
   }
 };
+
+exports.baixarLancamentos = (req, res) => {
+  const userId = req.session.userId;
+
+  try {
+    const rows = Transaction.getTransactionsByUser(userId);
+    // Ordenar por data (decrescente)
+    const ordenado = rows.sort((a, b) => new Date(b.data) - new Date(a.data));
+
+    let csv = "ID; Data; Tipo; Categoria; Descrição;Valor\n";
+    rows.forEach((row) => {
+      csv += `${row.id};${row.data};"${row.tipo}";"${row.categoria}";"${row.descricao}";${row.valor}\n`;
+    });
+
+    // Adiciona BOM (Byte Order Mark) para UTF-8
+    const BOM = "\uFEFF";
+    const csvComBOM = BOM + csv;
+
+    res.setHeader(
+      "Content-Disposition",
+      "attachment; filename=lancamentos.csv"
+    );
+    res.setHeader("Content-Type", "text/csv; charset=utf-8");
+    res.send(csvComBOM);
+    //res.json(rows);
+  } catch (err) {
+    console.error("Erro ao buscar transações:", err);
+    res.status(500).json({ erro: "Erro ao buscar transações" });
+  }
+};

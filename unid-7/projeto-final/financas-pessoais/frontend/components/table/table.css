@@ -49,7 +49,7 @@
 @media (max-width: 600px) {
   /* Permite rolagem horizontal na tabela para telas pequenas */
   .table {
-    padding: 1rem;
+    padding-bottom: 1rem;
   }
 
   .table table {
