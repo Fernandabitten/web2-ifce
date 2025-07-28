@@ -83,8 +83,10 @@ export async function iniciar() {
     tabelaRecebimentos.innerHTML = "";
 
     let total = 0;
-
-    for (const t of lista) {
+    const transacoesOrdenadas = [...lista].sort((a, b) =>
+      b.data.localeCompare(a.data)
+    );
+    for (const t of transacoesOrdenadas) {
       const valor = Number(t.valor);
       total += valor;
 
