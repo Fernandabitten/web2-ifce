@@ -16,6 +16,11 @@ exports.criar = (req, res) => {
   const userId = req.session.userId;
   const { tipo, valor, categoria, descricao, data } = req.body;
 
+  // Validação: valor deve ser positivo
+  if (Number(valor) <= 0) {
+    return res.status(400).json({ erro: "O valor deve ser maior que zero." });
+  }
+
   try {
     const id = Transaction.createTransaction(
       userId,
@@ -36,6 +41,11 @@ exports.atualizar = (req, res) => {
   const { id } = req.params;
   const userId = req.session.userId;
   const { tipo, valor, categoria, descricao, data } = req.body;
+
+  // Validação: valor deve ser positivo
+  if (Number(valor) <= 0) {
+    return res.status(400).json({ erro: "O valor deve ser maior que zero." });
+  }
 
   try {
     const result = Transaction.upDateTransation(
