@@ -202,10 +202,22 @@ function renderizarDashboard(params) {
     });
   }
 
+  const secaoRecomendacao = document.querySelector(
+    "section.cards .card#card-recomendacao"
+  )?.parentElement; // pega a <section class="cards"> que contém o card e o botão
+  const tabelaSection = document.querySelector(
+    "section .section-table"
+  )?.parentElement; // pega <section> da tabel
+
   if (!temLancamentos) {
     if (chartCategorias) chartCategorias.destroy();
     if (chartPeriodo) chartPeriodo.destroy();
+    if (secaoRecomendacao) secaoRecomendacao.classList.add("oculto");
+    if (tabelaSection) tabelaSection.classList.add("oculto");
     return;
+  } else {
+    if (secaoRecomendacao) secaoRecomendacao.classList.remove("oculto");
+    if (tabelaSection) tabelaSection.classList.remove("oculto");
   }
 
   atualizarTitulosGraficos(

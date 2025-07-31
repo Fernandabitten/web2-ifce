@@ -24,21 +24,31 @@ Este projeto foi desenvolvido como **Projeto Final** da disciplina **Desenvolvim
 
 ## Tecnologias Utilizadas
 
-- **Frontend**:
-  HTML5,
-  CSS3,
-  JavaScript (Vanilla),
-  Chart.js,
-- **Backend**:
-  Node.js,
-  Express.js,
-  SQLite (armazenamento local de dados),
-  bcrypt (hash de senhas),
-  express-session (gerenciamento de sessões),
-  dotenv (variáveis de ambiente)
-- **Hospedagem**:
-  - Frontend: GitHub Pages
-  - Backend: Render
+**Frontend**
+
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
+- Chart.js
+
+**Backend**
+
+- Node.js
+- Express.js (framework para APIs)
+- SQLite (armazenamento local de dados)
+- bcrypt (hash de senhas)
+- express-session (gerenciamento de sessões)
+- dotenv (variáveis de ambiente)
+- @google/generative-ai (integração com IA do Google)
+
+**Hospedagem**
+
+- Frontend: Vercel
+- Backend: Render
+
+**Ferramentas de Desenvolvimento**
+
+- nodemon (reload automático em desenvolvimento)
 
 ---
 
@@ -64,7 +74,7 @@ Este projeto foi desenvolvido como **Projeto Final** da disciplina **Desenvolvim
 
 - ## Exportação de dados
 
-  - Download dos lançamentos em formato SVG
+  - Download dos lançamentos em formato CVS
 
 - ## Resumo financeiro com IA
 
@@ -84,25 +94,25 @@ Este projeto foi desenvolvido como **Projeto Final** da disciplina **Desenvolvim
 ```
 financas-pessoais/
 ├── backend/
-│   ├── controllers/
+│   ├── controllers/                        # Lógica e processamento das requisições
 │   │   ├── authController.js               # Lógica de cadastro e login
 │   │   ├── transactionController.js        # Lógica dos lançamentos financeiros
 │   │   └── aiServiceController.js          # Lógica para resumos IA
-│   ├── middleware/
+│   ├── middleware/                         # Funções intermediárias
 │   │   └── authMiddleware.js               # Proteção de rotas/sessão
-│   ├── models/
+│   ├── models/                             # Definição dos dados e manipulação do banco
 │   │   └── transaction.js                  # Modelo dos lançamentos
 │   │   ├── userModel.js                    # Modelo dos usuarios
-│   ├── routes/
+│   ├── routes/                             # Definição dos caminhos e ligação com controllers
 │   │   ├── authRoutes.js                   # Rotas de cadastro/login
 │   │   ├── transactionRoutes.js            # Rotas dos lançamentos financeiros
 │   │   └── aiServiceRoutes.js              # Rotas para resumos IA
-│   ├── services/
+│   ├── services/                           # Funcionalidades auxiliares e integrações externas
 │   │   └── aiService.js                    # Serviço de integração IA
 │   ├── banco.db                            # Banco SQLite (users, transactions)
 │   ├── .env                                # Variáveis ambiente
-│   ├── .env.exemplo                        #  Exemplo de variáveis de ambiente necessárias para rodar a aplicação. Preencha com seus próprios valores e renomeie para .env
-│   ├── server.js                           # Inicialização do servidor Node.js
+│   ├── .env.exemplo                        # Exemplo de variáveis de ambiente necessárias para rodar a aplicação. Preencha com seus próprios valores e renomeie para .env
+│   ├── server.js                           # Inicialização e configuração do servidor
 │   ├── package.json                        # Dependências backend
 │   └── package-lock.json
 ├── frontend/
@@ -133,8 +143,8 @@ o
 1. Clone o repositório
 
 ```
-git clone https://github.com/Fernandabitten/financas-pessoais.git
-cd financas-pessoais
+git clone https://github.com/Fernandabitten/web2-ifce.git
+cd .\unid-7\projeto-final\financas-pessoais\
 ```
 
 2. Configuração backend
@@ -157,7 +167,10 @@ cd financas-pessoais
 4. Inicie o servidor backend:
 
 ```
-npm start
+npm start        # Inicia o servidor normalmente
+ou
+npm run dev      # Inicia o servidor em modo desenvolvimento com nodemon (reinicia automaticamente ao salvar alterações)
+
 ```
 
 5. Acesse o frontend:
